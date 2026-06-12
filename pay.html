@@ -89,6 +89,12 @@
       padding: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
     }
     .qr-watermark img { width: 100%; height: 100%; object-fit: contain; }
+    .qr-trust {
+      margin-top: 12px; font-size: 10px; font-weight: 600; color: var(--fk-muted);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      flex-wrap: wrap; line-height: 1.4;
+    }
+    .qr-trust span { white-space: nowrap; }
 
     .section-head {
       padding: 12px 14px 6px; font-size: 11px; font-weight: 700;
@@ -112,13 +118,15 @@
     .pay-logo {
       width: 40px; height: 40px; border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; overflow: hidden; background: #fff;
+      flex-shrink: 0; overflow: hidden;
       box-shadow: var(--shadow-sm);
     }
     .pay-logo img { width: 100%; height: 100%; object-fit: contain; }
-    .pay-logo.paytm img { padding: 6px; object-fit: contain; }
-    .pay-logo.phonepe img { border-radius: 10px; }
-    .pay-logo.upi img { padding: 5px; }
+    .pay-logo.paytm { background: #fff; padding: 6px; }
+    .pay-logo.phonepe { background: #fff; padding: 4px; }
+    .pay-logo.paytm img,
+    .pay-logo.phonepe img { width: 100%; height: 100%; object-fit: contain; }
+    .pay-logo.upi { background: #fff; padding: 5px; }
 
     .pay-btn-text { flex: 1; min-width: 0; }
     .pay-btn-text strong { display: block; font-size: 13px; font-weight: 700; color: var(--fk-text); }
@@ -245,18 +253,22 @@
           <img id="qrImage" src="" alt="UPI QR Code">
           <div class="qr-watermark"><img src="images/upi-logo.png" alt="UPI"></div>
         </div>
+        <div class="qr-trust">
+          <span>✅ 50,000+ customers</span>
+          <span>✅ Secure UPI</span>
+        </div>
       </div>
 
       <div class="card">
         <div class="section-head">Pay using UPI apps</div>
         <div class="pay-list">
           <button class="pay-btn paytm" type="button" id="btnPaytm">
-            <div class="pay-logo paytm"><img src="images/paytm-logo.png" alt="Paytm"></div>
+            <div class="pay-logo paytm"><img src="images/paytm-logo.svg" alt="Paytm"></div>
             <div class="pay-btn-text"><strong>Paytm</strong><span>Pay using Paytm UPI</span></div>
             <div class="pay-arrow"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></div>
           </button>
           <button class="pay-btn phonepe" type="button" id="btnPhonePe">
-            <div class="pay-logo phonepe"><img src="images/phonepe-logo.png" alt="PhonePe"></div>
+            <div class="pay-logo phonepe"><img src="images/phonepe-logo.svg" alt="PhonePe"></div>
             <div class="pay-btn-text"><strong>PhonePe</strong><span>Pay using PhonePe</span></div>
             <div class="pay-arrow"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></div>
           </button>
