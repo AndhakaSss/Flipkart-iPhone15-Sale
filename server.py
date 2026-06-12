@@ -11,6 +11,22 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 PORT = int(os.environ.get("PORT", "8765"))
 
+
+def load_dotenv():
+    env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    if not os.path.isfile(env_path):
+        return
+    with open(env_path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, value = line.partition("=")
+            os.environ.setdefault(key.strip(), value.strip())
+
+
+load_dotenv()
+
 RUPAYEX_TOKEN = os.environ.get("RUPAYEX_TOKEN", "")
 RUPAYEX_INSTANCE_ID = os.environ.get("RUPAYEX_INSTANCE_ID", "")
 RUPAYEX_BASE = "https://rupayex.net/api"
