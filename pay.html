@@ -122,10 +122,11 @@
       box-shadow: var(--shadow-sm);
     }
     .pay-logo img { width: 100%; height: 100%; object-fit: contain; }
-    .pay-logo.paytm { background: #fff; padding: 6px; }
-    .pay-logo.phonepe { background: #fff; padding: 4px; }
+    .pay-logo.paytm { background: #fff; padding: 0; border-radius: 10px; }
+    .pay-logo.phonepe { background: #fff; padding: 2px; }
     .pay-logo.paytm img,
-    .pay-logo.phonepe img { width: 100%; height: 100%; object-fit: contain; }
+    .pay-logo.phonepe img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+    .pay-logo.phonepe img { object-fit: contain; }
     .pay-logo.upi { background: #fff; padding: 5px; }
 
     .pay-btn-text { flex: 1; min-width: 0; }
@@ -263,12 +264,12 @@
         <div class="section-head">Pay using UPI apps</div>
         <div class="pay-list">
           <button class="pay-btn paytm" type="button" id="btnPaytm">
-            <div class="pay-logo paytm"><img src="images/paytm-logo.svg" alt="Paytm"></div>
+            <div class="pay-logo paytm"><img src="images/paytm-logo.png" alt="Paytm"></div>
             <div class="pay-btn-text"><strong>Paytm</strong><span>Pay using Paytm UPI</span></div>
             <div class="pay-arrow"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></div>
           </button>
           <button class="pay-btn phonepe" type="button" id="btnPhonePe">
-            <div class="pay-logo phonepe"><img src="images/phonepe-logo.svg" alt="PhonePe"></div>
+            <div class="pay-logo phonepe"><img src="images/phonepe-logo.png" alt="PhonePe"></div>
             <div class="pay-btn-text"><strong>PhonePe</strong><span>Pay using PhonePe</span></div>
             <div class="pay-arrow"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></div>
           </button>
