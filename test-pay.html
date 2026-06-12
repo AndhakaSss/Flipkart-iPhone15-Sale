@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>₹1 Payment Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif; background: #f1f3f6;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .card {
+      background: #fff; border-radius: 12px; padding: 28px 22px;
+      max-width: 380px; width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    .logo { width: 36px; height: 36px; margin-bottom: 12px; }
+    h1 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+    .sub { font-size: 12px; color: #878787; margin-bottom: 20px; }
+    .amount {
+      font-size: 48px; font-weight: 800; color: #2874f0;
+      margin-bottom: 6px; letter-spacing: -1px;
+    }
+    .amount small { font-size: 24px; }
+    .tag {
+      display: inline-block; background: #fff3e0; color: #e65100;
+      font-size: 10px; font-weight: 700; padding: 4px 10px;
+      border-radius: 20px; margin-bottom: 22px;
+    }
+    .btn {
+      width: 100%; padding: 15px; border: none; border-radius: 8px;
+      background: #ffd814; color: #212121; font-size: 15px;
+      font-weight: 800; cursor: pointer; font-family: inherit;
+      margin-bottom: 8px;
+    }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn.alt {
+      background: #2874f0; color: #fff; font-size: 13px; padding: 12px;
+    }
+    .log {
+      margin-top: 16px; text-align: left; background: #f5f5f5;
+      border-radius: 8px; padding: 12px; font-size: 11px;
+      font-family: monospace; color: #444; max-height: 200px;
+      overflow-y: auto; line-height: 1.5; word-break: break-all;
+      display: none;
+    }
+    .log.show { display: block; }
+    .log .ok { color: #008c00; }
+    .log .err { color: #e53935; }
+    .links { margin-top: 14px; font-size: 11px; }
+    .links a { color: #2874f0; text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img class="logo" src="images/flipkart-logo.png" alt="Flipkart">
+    <h1>Payment Test</h1>
+    <p class="sub">Verify UPI gateway is working</p>
+    <div class="amount"><small>₹</small>1</div>
+    <div class="tag">TEST MODE · MINIMUM AMOUNT</div>
+    <button class="btn" id="payBtn" type="button">Pay ₹1 via UPI</button>
+    <button class="btn alt" id="gatewayBtn" type="button" style="display:none">Open gateway directly</button>
+    <button class="btn alt" id="checkBtn" type="button" style="display:none;margin-top:0">I already paid — check status</button>
+    <div class="log" id="log"></div>
+    <div class="links">
+      <a href="index.html">← Back to shop</a>
+      &nbsp;·&nbsp;
+      <a href="callback.html">Order status</a>
+    </div>
+  </div>
+
+  <script>
+    const logEl = document.getElementById('log');
+    let lastPaymentUrl = null;
+
+    function log(msg, type) {
+      logEl.classList.add('show');
+      const line = document.createElement('div');
+      line.className = type || '';
+      line.textContent = new Date().toLocaleTimeString() + ' — ' + msg;
+      logEl.appendChild(line);
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    function orderId() {
+      return 'TEST1RS' + Date.now().toString().slice(-10);
+    }
+
+    const pending = sessionStorage.getItem('pending_order_id');
+    if (pending) {
+      const checkBtn = document.getElementById('checkBtn');
+      checkBtn.style.display = 'block';
+      checkBtn.textContent = 'Check status: ' + pending.slice(-8);
+      checkBtn.addEventListener('click', () => {
+        location.href = 'callback.html?order_id=' + encodeURIComponent(pending);
+      });
+    }
+
+    document.getElementById('payBtn').addEventListener('click', async () => {
+      if (location.protocol === 'file:') {
+        log('Open via http://localhost:8765/test-pay.html', 'err');
+        alert('Run: python server.py\nThen open http://localhost:8765/test-pay.html');
+        return;
+      }
+
+      const btn = document.getElementById('payBtn');
+      btn.disabled = true;
+      btn.textContent = 'Creating order…';
+      logEl.innerHTML = '';
+      logEl.classList.add('show');
+
+      const oid = orderId();
+      const redirectUrl = location.origin + '/callback.html?order_id=' + encodeURIComponent(oid);
+      log('Order ID: ' + oid);
+
+      try {
+        const res = await fetch('/api/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: 1,
+            order_id: oid,
+            redirect_url: redirectUrl,
+            customer_mobile: '9999999999',
+            remark1: '₹1 test payment'
+          })
+        });
+        const text = await res.text();
+        let data;
+        try { data = JSON.parse(text); } catch (_) {
+          throw new Error('Bad JSON: ' + text.slice(0, 120));
+        }
+
+        log('API status: ' + (data.status ? 'OK' : 'FAIL'), data.status ? 'ok' : 'err');
+        if (data.message) log(data.message);
+
+        if (data.payment_parse_warning) {
+          log('Parse warning: ' + data.payment_parse_warning, 'err');
+        }
+
+        if (!data.status) throw new Error(data.message || 'Order failed');
+
+        lastPaymentUrl = data.payment_url;
+        sessionStorage.setItem('pending_order_id', oid);
+        sessionStorage.setItem('order_product', '₹1 Test Payment');
+        sessionStorage.setItem('order_mobile', '9999999999');
+
+        if (data.payment_data) {
+          log('Payment data parsed ✓ Amount: ₹' + data.payment_data.amount, 'ok');
+          sessionStorage.setItem('payment_data', JSON.stringify(data.payment_data));
+          log('Redirecting to pay page…', 'ok');
+          setTimeout(() => { location.href = 'pay.html'; }, 800);
+          return;
+        }
+
+        if (data.payment_url) {
+          log('Custom pay unavailable — using gateway URL', 'err');
+          document.getElementById('gatewayBtn').style.display = 'block';
+          document.getElementById('gatewayBtn').onclick = () => {
+            location.href = data.payment_url;
+          };
+          log('Click "Open gateway directly" below', 'ok');
+        }
+
+        btn.disabled = false;
+        btn.textContent = 'Pay ₹1 via UPI';
+      } catch (e) {
+        log('Error: ' + e.message, 'err');
+        btn.disabled = false;
+        btn.textContent = 'Pay ₹1 via UPI';
+      }
+    });
+  </script>
+</body>
+</html>

