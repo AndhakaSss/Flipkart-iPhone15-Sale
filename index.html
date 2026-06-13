@@ -18,6 +18,8 @@
       --fk-text: #212121;
       --fk-muted: #878787;
       --fk-border: #e0e0e0;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     html {
       scroll-behavior: smooth;
@@ -119,7 +121,7 @@
     .gallery-main img {
       max-width: 72%; max-height: 92%;
       object-fit: contain;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.35s var(--ease-out), transform 0.45s var(--ease-out);
       user-select: none; -webkit-user-drag: none;
     }
     .gallery-main img.hero-black {
@@ -138,6 +140,7 @@
     .dot {
       width: 6px; height: 6px; border-radius: 50%;
       background: #ccc; border: none; cursor: pointer; padding: 0;
+      transition: width 0.3s var(--ease-out), height 0.3s var(--ease-out), background 0.25s ease;
     }
     .dot.active { background: var(--fk-blue); width: 8px; height: 8px; }
 
@@ -155,7 +158,10 @@
       width: 54px; height: 54px; border-radius: 6px;
       border: 2px solid #e0e0e0; overflow: hidden;
       cursor: pointer; position: relative; background: #fafafa;
+      transition: transform 0.25s var(--ease-out), border-color 0.25s ease, box-shadow 0.25s ease;
     }
+    .color-thumb:active { transform: scale(0.94); }
+    .color-thumb.active { box-shadow: 0 0 0 1px #212121; }
     .color-thumb img { width: 100%; height: 100%; object-fit: cover; }
     .color-thumb[data-color="Black"] img { object-position: 0% 50%; }
     .color-thumb[data-color="Blue"] img { object-position: 20% 50%; }
@@ -177,7 +183,9 @@
       flex: 1; border: 1px solid var(--fk-border); border-radius: 8px;
       padding: 10px; cursor: pointer; text-align: left;
       background: #fff; font-family: inherit;
+      transition: transform 0.2s var(--ease-out), border-color 0.25s ease, box-shadow 0.25s ease;
     }
+    .variant:active:not(.oos) { transform: scale(0.98); }
     .variant.active { border-color: var(--fk-text); border-width: 2px; }
     .variant.oos { opacity: 0.5; pointer-events: none; position: relative; }
     .variant.oos::after {
@@ -380,7 +388,9 @@
       border: 1px solid var(--fk-border); background: #fff;
       font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
       color: var(--fk-text);
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s var(--ease-out);
     }
+    .tab:active { transform: scale(0.96); }
     .tab.active { background: var(--fk-text); color: #fff; border-color: var(--fk-text); }
     .tab-content { display: flex; flex-direction: column; gap: 10px; }
     .tab-content img { width: 100%; border-radius: 8px; display: block; }
@@ -392,8 +402,12 @@
       font-family: Georgia, 'Times New Roman', serif;
       font-size: 32px; font-weight: 400; letter-spacing: -0.5px;
     }
-    .detail-gallery { display: none; flex-direction: column; gap: 10px; margin-top: 10px; }
-    .detail-gallery.open { display: flex; }
+    .detail-gallery {
+      display: flex; flex-direction: column; gap: 10px; margin-top: 10px;
+      max-height: 0; opacity: 0; overflow: hidden;
+      transition: max-height 0.5s var(--ease-out), opacity 0.35s ease, margin 0.35s ease;
+    }
+    .detail-gallery.open { max-height: 4000px; opacity: 1; }
     .show-more {
       display: block; width: 100%; padding: 10px;
       border: 1px solid var(--fk-border); border-radius: 4px;
@@ -419,39 +433,53 @@
 
     /* sticky bar */
     .sticky-bar {
-      position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+      position: fixed; bottom: 0; left: 50%; transform: translateX(-50%) translateY(0);
       width: 100%; max-width: 480px;
       display: flex; align-items: stretch;
       background: #fff; border-top: 1px solid var(--fk-border);
       box-shadow: 0 -2px 10px rgba(0,0,0,0.08); z-index: 100;
+      animation: barSlideUp 0.55s var(--ease-out) 0.2s both;
+    }
+    @keyframes barSlideUp {
+      from { transform: translateX(-50%) translateY(100%); opacity: 0; }
+      to { transform: translateX(-50%) translateY(0); opacity: 1; }
     }
     .bar-cart {
       width: 52px; border: none; background: #fff;
       border-right: 1px solid var(--fk-border);
       display: flex; align-items: center; justify-content: center;
       cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s var(--ease-out);
     }
+    .bar-cart:active { transform: scale(0.92); background: #f5f5f5; }
     .bar-buy {
       flex: 1; border: none; background: var(--fk-buy);
       padding: 10px 12px; cursor: pointer; font-family: inherit;
       text-align: center;
+      transition: transform 0.15s var(--ease-out), filter 0.2s ease;
     }
+    .bar-buy:active { transform: scale(0.98); filter: brightness(0.97); }
     .bar-buy strong { display: block; font-size: 14px; font-weight: 800; }
     .bar-buy small { font-size: 11px; font-weight: 600; }
 
     /* checkout modal */
     .modal-overlay {
-      display: none; position: fixed; inset: 0;
+      display: flex; position: fixed; inset: 0;
       background: rgba(0,0,0,0.55); z-index: 200;
       align-items: flex-end; justify-content: center;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
     }
-    .modal-overlay.open { display: flex; }
+    .modal-overlay.open { opacity: 1; visibility: visible; pointer-events: auto; }
     .modal {
       background: var(--fk-bg); width: 100%; max-width: 480px;
       border-radius: 16px 16px 0 0;
       max-height: 92vh; overflow-y: auto;
       display: flex; flex-direction: column;
+      transform: translateY(100%);
+      transition: transform 0.45s var(--ease-out);
     }
+    .modal-overlay.open .modal { transform: translateY(0); }
     .modal-handle {
       width: 36px; height: 4px; background: #ccc;
       border-radius: 2px; margin: 10px auto 0;
@@ -475,8 +503,9 @@
     .checkout-step {
       flex: 1; text-align: center; padding: 6px 4px;
       border-radius: 4px; background: #f5f5f5; color: var(--fk-muted);
+      transition: background 0.35s ease, color 0.35s ease, transform 0.3s var(--ease-spring);
     }
-    .checkout-step.active { background: #e8f4fd; color: var(--fk-blue); }
+    .checkout-step.active { background: #e8f4fd; color: var(--fk-blue); transform: scale(1.02); }
     .checkout-step.done { background: #e8f5e9; color: var(--fk-green); }
 
     .modal-body { padding: 12px 16px 100px; flex: 1; }
@@ -484,6 +513,14 @@
       background: #fff; border-radius: 8px;
       border: 1px solid var(--fk-border);
       padding: 12px; margin-bottom: 12px;
+      animation: cardFadeIn 0.45s var(--ease-out) both;
+    }
+    .checkout-card:nth-child(2) { animation-delay: 0.06s; }
+    .checkout-card:nth-child(3) { animation-delay: 0.12s; }
+    .checkout-card:nth-child(4) { animation-delay: 0.18s; }
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .checkout-card-title {
       font-size: 12px; font-weight: 700; color: var(--fk-text);
@@ -554,8 +591,10 @@
       padding: 10px 12px; border: 1px solid var(--fk-border);
       border-radius: 6px; cursor: pointer; background: #fff;
       font-family: inherit; text-align: left; width: 100%;
+      transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s var(--ease-out), box-shadow 0.25s ease;
     }
-    .pay-opt.active { border-color: var(--fk-blue); background: #f0f7ff; }
+    .pay-opt:active:not(.disabled) { transform: scale(0.98); }
+    .pay-opt.active { border-color: var(--fk-blue); background: #f0f7ff; box-shadow: 0 2px 8px rgba(40,116,240,0.12); }
     .pay-opt-icon {
       width: 32px; height: 32px; border-radius: 6px;
       background: #fff; display: flex; align-items: center; justify-content: center;
@@ -615,7 +654,9 @@
       width: 100%; padding: 14px; border: none; border-radius: 6px;
       background: var(--fk-buy); font-size: 15px; font-weight: 800;
       cursor: pointer; font-family: inherit; color: var(--fk-text);
+      transition: transform 0.15s var(--ease-out), opacity 0.2s ease, box-shadow 0.2s ease;
     }
+    .modal-buy:active:not(.loading) { transform: scale(0.98); }
     .modal-secure {
       text-align: center; font-size: 10px; color: var(--fk-muted);
       margin-top: 8px; display: flex; align-items: center;
@@ -629,14 +670,19 @@
 
     /* pincode sheet + payment overlay */
     .sheet-overlay, .pay-overlay {
-      display: none; position: fixed; inset: 0; z-index: 300;
+      display: flex; position: fixed; inset: 0; z-index: 300;
       background: rgba(0,0,0,0.5); align-items: flex-end; justify-content: center;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
     }
-    .sheet-overlay.open, .pay-overlay.open { display: flex; }
+    .sheet-overlay.open, .pay-overlay.open { opacity: 1; visibility: visible; pointer-events: auto; }
     .sheet {
       background: #fff; width: 100%; max-width: 480px;
       border-radius: 16px 16px 0 0; padding: 20px 16px 28px;
+      transform: translateY(100%);
+      transition: transform 0.45s var(--ease-out);
     }
+    .sheet-overlay.open .sheet { transform: translateY(0); }
     .sheet h3 { font-size: 16px; font-weight: 700; margin-bottom: 14px; }
     .sheet input {
       width: 100%; padding: 12px; border: 1px solid var(--fk-border);
@@ -663,7 +709,10 @@
       background: #fff; width: 100%; max-width: 480px;
       border-radius: 16px 16px 0 0; padding: 32px 24px 40px;
       text-align: center;
+      transform: translateY(100%);
+      transition: transform 0.45s var(--ease-out);
     }
+    .pay-overlay.open .pay-screen { transform: translateY(0); }
     .pay-screen img { height: 28px; margin-bottom: 20px; }
     .pay-spinner {
       width: 36px; height: 36px; border: 3px solid #e0e0e0;
@@ -748,7 +797,9 @@
     .review-card {
       display: flex; gap: 10px; padding: 14px 0;
       border-top: 1px solid #f0f0f0;
+      transition: transform 0.25s var(--ease-out), box-shadow 0.25s ease;
     }
+    .review-card.revealed:hover { transform: translateY(-2px); }
     .review-avatar {
       width: 38px; height: 38px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
@@ -840,11 +891,6 @@
       margin-bottom: 8px;
     }
 
-    .bar-buy { position: relative; animation: buyPulse 2s ease-in-out infinite; }
-    @keyframes buyPulse {
-      0%, 100% { box-shadow: inset 0 0 0 0 rgba(255,100,0,0); }
-      50% { box-shadow: inset 0 0 0 2px rgba(255,100,0,0.35); }
-    }
     .hurry-tag {
       position: absolute; top: -8px; right: 8px;
       background: #f44336; color: #fff;
@@ -867,6 +913,60 @@
       display: flex; align-items: center; gap: 4px;
     }
     .gallery-wishlist strong { color: #c2185b; }
+
+    .bar-buy { position: relative; animation: buyPulse 2s ease-in-out infinite; }
+    @keyframes buyPulse {
+      0%, 100% { box-shadow: inset 0 0 0 0 rgba(255,100,0,0); }
+      50% { box-shadow: inset 0 0 0 2px rgba(255,100,0,0.35); }
+    }
+
+    /* ── smooth animations ── */
+    .page-enter { animation: pageFadeIn 0.5s var(--ease-out) both; }
+    @keyframes pageFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .gallery { animation: galleryIn 0.65s var(--ease-out) 0.05s both; }
+    @keyframes galleryIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .badge-bestseller { animation: badgePop 0.5s var(--ease-spring) 0.3s both; }
+    @keyframes badgePop {
+      from { opacity: 0; transform: scale(0.6); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .deal-urgency { animation: urgencySlide 0.45s var(--ease-out) both; }
+    @keyframes urgencySlide {
+      from { opacity: 0; transform: translateY(-100%); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
+    }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .gallery-actions button {
+      transition: transform 0.2s var(--ease-out), box-shadow 0.2s ease;
+    }
+    .gallery-actions button:active { transform: scale(0.9); }
+    .modal-close { transition: background 0.2s ease, transform 0.2s var(--ease-out); }
+    .modal-close:active { transform: scale(0.9); background: #eee; }
+    .pincode-info { transition: opacity 0.3s ease, transform 0.3s var(--ease-out); }
+    .pincode-info.show { animation: softPop 0.35s var(--ease-spring) both; }
+    @keyframes softPop {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .collapse-body { transition: max-height 0.4s var(--ease-out); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body>
@@ -889,7 +989,7 @@
     <symbol id="i-display" viewBox="0 0 24 24"><path fill="currentColor" d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></symbol>
   </svg>
-  <div class="app">
+  <div class="app page-enter">
     <header class="header">
       <button class="back-btn" aria-label="Back">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
@@ -1447,11 +1547,17 @@
       if (i >= GALLERY.length) i = 0;
       slide = i;
       const img = document.getElementById('mainImg');
-      img.style.opacity = '0.4';
-      img.onload = () => { img.style.opacity = '1'; };
+      img.style.opacity = '0';
+      img.style.transform = 'scale(0.96)';
+      const show = () => {
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1)';
+      };
+      img.onload = show;
       img.src = GALLERY[i].src;
       img.alt = 'iPhone 15 – ' + GALLERY[i].label;
       img.className = GALLERY[i].heroClass || '';
+      if (img.complete) show();
       renderDots();
     }
 
@@ -1945,7 +2051,7 @@
     function renderReviews() {
       const starSvg = '<svg class="ico ico-green" width="11" height="11"><use href="#i-star"/></svg>';
       document.getElementById('reviewList').innerHTML = REVIEWS.map(r => `
-        <div class="review-card">
+        <div class="review-card reveal">
           <div class="review-avatar" style="background:${r.color}">${r.name[0]}</div>
           <div class="review-body">
             <div class="review-meta">
@@ -1957,7 +2063,26 @@
             <div class="review-author">${r.name} · ${r.city} · ${r.ago}</div>
           </div>
         </div>`).join('');
+      observeReveals(document.querySelectorAll('#reviewList .reveal'));
     }
+
+    function observeReveals(nodes) {
+      if (!nodes.length) return;
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('revealed');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+      nodes.forEach(el => obs.observe(el));
+    }
+
+    document.querySelectorAll('.section, .live-panel, .wow-deal, .trust-banner').forEach(el => {
+      el.classList.add('reveal');
+    });
+    observeReveals(document.querySelectorAll('.reveal'));
 
     let viewers = 847;
     let cartHour = 63;

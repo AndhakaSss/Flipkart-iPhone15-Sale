@@ -14,10 +14,17 @@
       --fk-text: #212121;
       --fk-muted: #878787;
       --fk-border: #e0e0e0;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--fk-bg); min-height: 100vh; color: var(--fk-text);
+      animation: pageIn 0.45s var(--ease-out) both;
+    }
+    @keyframes pageIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     .app { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; }
     .header {
@@ -32,11 +39,21 @@
     .status-card {
       background: #fff; border: 1px solid var(--fk-border);
       border-radius: 8px; padding: 24px 18px; text-align: center;
+      animation: cardIn 0.55s var(--ease-out) both;
+    }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .status-icon {
       width: 56px; height: 56px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 14px;
+      animation: iconPop 0.55s var(--ease-spring) 0.15s both;
+    }
+    @keyframes iconPop {
+      from { opacity: 0; transform: scale(0.4); }
+      to { opacity: 1; transform: scale(1); }
     }
     .status-icon svg { width: 28px; height: 28px; }
     .status-icon.success { background: #e8f5e9; color: var(--fk-green); }
@@ -51,6 +68,11 @@
     .order-box {
       background: var(--fk-bg); border-radius: 8px; padding: 14px;
       text-align: left; margin-bottom: 16px; font-size: 12px;
+      animation: slideUp 0.45s var(--ease-out) 0.25s both;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .order-item {
       display: flex; gap: 10px; padding-bottom: 12px;
@@ -86,6 +108,15 @@
       border-radius: 4px; background: #ffd814; color: var(--fk-text);
       font-weight: 800; font-size: 14px; text-decoration: none;
       text-align: center; font-family: inherit; cursor: pointer;
+      transition: transform 0.15s var(--ease-out), filter 0.2s ease;
+      animation: slideUp 0.45s var(--ease-out) 0.35s both;
+    }
+    .btn:active { transform: scale(0.98); filter: brightness(0.97); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
@@ -123,6 +154,8 @@
       return '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>';
     }
 
+    let lastRendered = '';
+
     async function verify() {
       const el = document.getElementById('status');
       if (!orderId) {
@@ -141,6 +174,11 @@
         const data = JSON.parse(text);
 
         const status = (data.payment_status || params.get('status') || '').toUpperCase();
+        if (status === 'PENDING' && lastRendered === 'PENDING') {
+          setTimeout(verify, 3000);
+          return;
+        }
+        lastRendered = status;
         if (status === 'SUCCESS') sessionStorage.removeItem('pending_order_id');
         const amount = data.amount != null ? '₹' + Number(data.amount).toFixed(0) : '₹748';
         const utr = data.utr || params.get('utr') || '—';
